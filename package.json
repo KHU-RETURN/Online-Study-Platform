@@ -1,0 +1,24 @@
+{
+  "name": "online-study-platform",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/KHU-RETURN/Online-Study-Platform.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/KHU-RETURN/Online-Study-Platform/issues"
+  },
+  "homepage": "https://github.com/KHU-RETURN/Online-Study-Platform#readme",
+  "dependencies": {
+    "ejs": "^3.1.8",
+    "express": "^4.18.1",
+    "path": "^0.12.7"
+  }
+}
