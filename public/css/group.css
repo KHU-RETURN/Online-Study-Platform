@@ -1,0 +1,159 @@
+:root {
+  --font-xs: 12px;
+  --font-sm: 14px;
+  --font-base: 16px;
+  --font-lg: 18px;
+  --font-xl: 20px;
+  --dark-gray: #efefef;
+  --light-gray: #f9f9f9;
+  --main-color: #ddeeaf;
+  --point-color: #677e25;
+}
+
+html,
+body {
+  font-family: "Noto Sans KR", sans-serif;
+  margin: 0;
+}
+
+main {
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  width: 1920px;
+  height: 90vh;
+  width: 100vw;
+
+  /*transform: translate(0%, 20%);*/
+  position: absolute;
+  bottom: 0;
+
+  background: #ffffff;
+  box-shadow: 1px -1px 25px -2px rgba(0, 0, 0, 0.14);
+  border-radius: 50px 50px 0px 0px;
+}
+
+button {
+  background-color: #ffffff;
+  box-shadow: 0px 0px 2px rgba(0, 0, 0, 0.25);
+  border-radius: 20px;
+  border: none;
+
+  padding: 13px 60px;
+  margin: 30px 0px;
+
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+}
+
+button:hover {
+  cursor: pointer;
+}
+
+input[type="text"] {
+  border: none;
+  border-radius: 12px;
+  width: 300px;
+  background-color: var(--dark-gray);
+  font-family: "Noto Sans KR", sans-serif;
+  font-size: var(--font-sm);
+  padding: 10px;
+}
+
+input[type="color"] {
+  background: none;
+  border: none;
+  cursor: pointer;
+  height: 40px;
+  width: 80px;
+}
+
+textarea {
+  resize: none;
+  overflow: hidden;
+  border: none;
+  border-radius: 12px;
+  background-color: var(--dark-gray);
+  font-family: "Noto Sans KR", sans-serif;
+  font-size: var(--font-sm);
+  padding: 10px;
+}
+
+.material-symbols-outlined {
+  position: absolute;
+  /*width: 25.71px;
+  height: 25.71px;*/
+  left: 24px;
+  top: 24px;
+  color: var(--point-color);
+}
+
+.material-symbols-outlined:hover {
+  cursor: pointer;
+}
+
+#input {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 20px;
+}
+
+#input_list {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: space-evenly;
+  font-size: var(--font-base);
+  font-weight: 400;
+}
+
+#page_name {
+  color: var(--point-color);
+  font-style: normal;
+  font-weight: 500;
+  font-size: var(--font-xl);
+  line-height: 46px;
+  margin: 42px 42px 10px 42px;
+  border-bottom: 1px solid var(--dark-gray);
+}
+
+#invitation_code {
+  height: 33px;
+  width: 450px;
+  font-size: var(--font-base);
+  font-weight: 400;
+  margin-top: 80px;
+}
+
+#accept_button {
+  font-family: "Noto Sans KR", sans-serif;
+  font-size: var(--font-base);
+  font-weight: 400;
+  border-radius: 12px;
+  padding: 10px 200px;
+}
+
+#two_button button {
+  margin: 30px 20px;
+}
+
+.input_item {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  margin: 10px 0px;
+}
+
+.input_item label {
+  margin: 20px 0px;
+}
+
+.button_text {
+  font-family: "Noto Sans KR", sans-serif;
+  font-style: normal;
+  font-size: var(--font-base);
+  font-weight: 500;
+}
