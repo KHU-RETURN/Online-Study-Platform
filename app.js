@@ -1,9 +1,9 @@
-var express = require('express');
-var path = require('path');
+const express = require('express'),
+  app = express(),
+  path = require('path');
 
-var mainRouter = require('./routes/main');
-
-var app = express();
+const mainRouter = require('./routes/main');
+const pageRouter = require('./routes/page');
 
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
@@ -20,5 +20,6 @@ app.use(express.urlencoded({ extended: false }));
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', mainRouter);
+app.use('/', pageRouter);
 
 module.exports = app;
