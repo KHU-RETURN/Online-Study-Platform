@@ -22,18 +22,17 @@
     <header><span class="material-symbols-outlined"> home </span></header>
     <main>
       <div id="page_name">그룹 생성</div>
-      <!-- bottom-border로 아래 바 구현 -->
       <div id="input">
-        <form action="" method="get">
+        <form method="post" id="form_data">
           <div id="input_list">
             <div class="input_item">
               <label for="group_name">1. 그룹 이름</label>
-              <input type="text" id="group_name" name="group_name" />
+              <input type="text" id="group_name" name="name" />
             </div>
             <div class="input_item">
-              <label for="group_description">2. 그룹 설명</label>
+              <label for="description">2. 그룹 설명</label>
               <textarea
-                name="textarea"
+                name="description"
                 rows="2"
                 cols="50"
                 id="group_description"
@@ -41,23 +40,21 @@
               ></textarea>
             </div>
             <div class="input_item">
-              <label for="group_color">3. 그룹 색상</label>
+              <label for="color">3. 그룹 색상</label>
               <input
                 type="color"
                 id="group_color"
-                name="group_color"
+                name="color"
                 value="#ddeeaf"
               />
             </div>
           </div>
         </form>
-        <button type="sumbmit">
-          <span class="button_text">그룹 생성</span>
-        </button>
+        <button type="sumbmit" id="make_button">그룹 생성</button>
       </div>
     </main>
 
     <script src="http://code.jquery.com/jquery-3.5.1.min.js"></script>
-    <script type="text/javascript" src="/js/cursor_test.js"></script>
+    <script type="text/javascript" src="js/make_group.js"></script>
   </body>
 </html>
