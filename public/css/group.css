@@ -14,18 +14,23 @@ html,
 body {
   font-family: "Noto Sans KR", sans-serif;
   margin: 0;
+  display: flex;
+  flex-direction: column;
+  background-color: var(--light-gray);
+}
+
+header {
+  margin: 20px;
 }
 
 main {
   display: flex;
   flex-direction: column;
-  position: absolute;
-  width: 1920px;
   height: 90vh;
   width: 100vw;
 
-  /*transform: translate(0%, 20%);*/
-  position: absolute;
+  position: fixed;
+  overflow-y: scroll;
   bottom: 0;
 
   background: #ffffff;
@@ -33,7 +38,13 @@ main {
   border-radius: 50px 50px 0px 0px;
 }
 
+main::-webkit-scrollbar {
+  display: none;
+}
+
 button {
+  font-family: "Noto Sans KR", sans-serif;
+  font-weight: 400;
   background-color: #ffffff;
   box-shadow: 0px 0px 2px rgba(0, 0, 0, 0.25);
   border-radius: 20px;
@@ -78,14 +89,15 @@ textarea {
   font-family: "Noto Sans KR", sans-serif;
   font-size: var(--font-sm);
   padding: 10px;
+  overflow: visible;
 }
 
 .material-symbols-outlined {
-  position: absolute;
+  z-index: 1;
+
   /*width: 25.71px;
   height: 25.71px;*/
-  left: 24px;
-  top: 24px;
+
   color: var(--point-color);
 }
 
@@ -138,6 +150,10 @@ textarea {
 
 #two_button button {
   margin: 30px 20px;
+  font-family: "Noto Sans KR", sans-serif;
+  font-style: normal;
+  font-size: var(--font-base);
+  font-weight: 500;
 }
 
 .input_item {
@@ -149,11 +165,4 @@ textarea {
 
 .input_item label {
   margin: 20px 0px;
-}
-
-.button_text {
-  font-family: "Noto Sans KR", sans-serif;
-  font-style: normal;
-  font-size: var(--font-base);
-  font-weight: 500;
 }
