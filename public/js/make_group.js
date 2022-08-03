@@ -37,7 +37,7 @@ if (accept_button) {
 }
 
 function joinGroup() {
-  location.href = "index.html?" + invitation_code.value; //경로 수정
+  location.href = "/check_group?code=" + invitation_code.value; //경로 수정
   // 받을 때
   /* 
     temp = location.href.split("?");
