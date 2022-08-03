@@ -23,7 +23,7 @@ if (accept_button) {
 } else if (make_button) {
   make_button.addEventListener("click", checkData);
 } else if (modify_button) {
-  fetch("http://localhost:3000/groups/5") //id로 불러옴
+  fetch("http://localhost:5000/groups/5") //id로 불러옴
     .then((response) => response.json())
     .then((data) => {
       original_value = data;
@@ -53,7 +53,7 @@ function makeGroup() {
   // 초대코드 추가하는 코드 있어야 함
   var group = serialize(formData);
   console.log(JSON.stringify(group));
-  fetch("http://localhost:3000/groups", {
+  fetch("http://localhost:5000/groups", {
     method: "POST",
     body: JSON.stringify(group),
     headers: {
@@ -68,7 +68,7 @@ function modifyGroup() {
   var formData = new FormData(form);
   var group = serialize(formData);
 
-  fetch("http://localhost:3000/groups/" + original_value.id, {
+  fetch("http://localhost:5000/groups/" + original_value.id, {
     method: "PUT",
     body: JSON.stringify(group),
     headers: {
@@ -82,7 +82,7 @@ function modifyGroup() {
 function deleteGroup() {
   var con_test = confirm(original_value.name + " 그룹을 삭제하시겠습니까?");
   if (con_test == true) {
-    fetch("http://localhost:3000/groups/" + original_value.id, {
+    fetch("http://localhost:5000/groups/" + original_value.id, {
       method: "DELETE",
     })
       .then((response) => response.json())

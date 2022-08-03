@@ -1,0 +1,42 @@
+{
+  "groups": [
+    {
+      "id": "5",
+      "name": "g Lindsey",
+      "color": "#EFEFEF",
+      "description": "간단한 설명",
+      "code": "62e8e8bc2df249bf0aaa4c2f"
+    },
+    {
+      "name": "ㅎㅎ",
+      "description": "ㅎㅎ",
+      "color": "#607f0b",
+      "id": "CWa_U8W",
+      "code": "62e8e8bc7b0b98af2f7d2222"
+    },
+    {
+      "name": "안녕",
+      "description": "하세요",
+      "color": "#ddeeaf",
+      "id": "iXTeibe"
+    },
+    {
+      "name": "ㅇㅇ",
+      "description": "ㅇㅇ",
+      "color": "#ddeeaf",
+      "id": "AwEyMwV"
+    },
+    {
+      "name": "ㅇㅇ2",
+      "description": "ㅇㅇ2",
+      "color": "#ddeeaf",
+      "id": "k15qy4c"
+    },
+    {
+      "name": "ㅇㅇ",
+      "description": "ㅇㅇ",
+      "color": "#ddeeaf",
+      "id": "ln3Youk"
+    }
+  ]
+}
