@@ -10,13 +10,16 @@ const getGroupInfo = fetch(`http://localhost:3000/main/${id}`)
 .then((response)=>response.json())
 .then((response)=>{
     let originalData = response;
+    let name = originalData.name;
     let groupNameArray = originalData.groupName;
     let groupExplainArray = originalData.groupExplain;
     let groupNumberArray = originalData.groupNumber;
     let groupColor = originalData.color;
     let profileSrc = originalData.profileImage;
     let groupLink = originalData.pageLink;
-    console.log(groupLink)
+    
+    //사용자 이름 
+    userName.innerHTML = name;
 
     //프로필 사진 등록
     if(profileSrc.length != ""){
