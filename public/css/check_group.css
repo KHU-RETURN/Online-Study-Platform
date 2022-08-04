@@ -50,7 +50,8 @@ header {
   flex-direction: column;
   justify-content: center;
 
-  background: #348cb2 url("/images/bg.jpg") bottom left;
+  background: linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.8)),
+    url("/images/bg.jpg") bottom left;
   background-repeat: repeat-x;
   height: 100%;
   left: 0;
