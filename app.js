@@ -8,7 +8,6 @@ const express = require('express'),
   mongoose = require('mongoose'),
   MongoStore = require('connect-mongo');
 
-const mainRouter = require('./routes/main');
 const authRouter = require('./routes/auth');
 const apiRouter = require('./routes/api');
 const pageRouter = require('./routes/page');
@@ -46,7 +45,6 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(express.static(path.join(__dirname, 'public')));
 
-app.use('/', mainRouter);
 app.use('/auth', authRouter);
 app.use('/api', apiRouter);
 app.use('/', pageRouter);

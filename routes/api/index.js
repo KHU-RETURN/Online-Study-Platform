@@ -3,13 +3,28 @@ const express = require('express'),
   userModel = require('../../models/users.js'),
   groupModel = require('../../models/groups.js');
 
-router.post('/get_my_groups', async function (req, res) {
+router.get('/main', async function (req, res) {
+  var result = {};
+  result.name = req.session.user.displayName;
+  result.profileImage = req.session.user.photos;
+
+  result.groupName = [];
+  result.groupExplain = [];
+  result.groupNumber = [];
+  result.color = [];
+  result.pageLink = [];
+
   var groupArr = req.session.user.groups;
-  for(var i = 0; i < groupArr.length; i++) {
+
+  for (var i = 0; i < groupArr.length; i++) {
     var group = await groupModel.findById(groupArr[i].id);
-    groupArr[i].groupName = group.groupName;
+    result.groupName.push(group.groupName);
+    result.groupExplain.push(group.groupDescription);
+    result.groupNumber.push(group.groupMember.length);
+    result.color.push(group.color);
+    result.pageLink.push("/groups/"+groupArr[i].id);
   }
-  res.send(groupArr);
+  res.send(result);
 });
 
 router.post('/edit_profile_image', async function (req, res) {
@@ -21,7 +36,7 @@ router.post('/edit_profile_name', async function (req, res) {
 });
 
 router.post('/make_group', async function (req, res) {
-  var user = await userModel.findOne({ id: req.session.user.id });;
+  var user = await userModel.findOne({ id: req.session.user.id });
   var newGroup = req.body;
   newGroup.groupMember = [{id: user.id}];
   const group = new groupModel(newGroup);
@@ -35,14 +50,18 @@ router.post('/make_group', async function (req, res) {
 
 router.post('/join_group', async function (req, res) {
   var user = await userModel.findOne({ id: req.session.user.id });
-  var group = await groupModel.findOne({_id: req.body.code});
-  if (!group) return res.send("no");
-  group.groupMember = [{id: user.id}];
-  await groupModel.findByIdAndUpdate(req.body.code, group);
+  try {
+    var group = await groupModel.findOne({ _id: req.body.code });
+    if (!group) return res.send("no");
+    group.groupMember = [{ id: user.id }];
+    await groupModel.findByIdAndUpdate(req.body.code, group);
 
-  user.groups.push({id: req.body.code, owner: false,});
-  await userModel.findOneAndUpdate({ id: req.session.user.id }, user);
-  res.send("finish");
+    user.groups.push({ id: req.body.code, owner: false, });
+    await userModel.findOneAndUpdate({ id: req.session.user.id }, user);
+    res.send("finish");
+  } catch (error) {
+    return res.send("no");
+  }
 });
 
 router.put('/modify_group/:code', async function (req, res) {
