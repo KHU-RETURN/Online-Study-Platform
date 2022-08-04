@@ -19,7 +19,7 @@
   </head>
 
   <body>
-    <header><span class="material-symbols-outlined"> home </span></header>
+    <header><span class="material-symbols-outlined" onclick="location.href='/'"> home </span></header>
     <main>
       <div id="page_name">그룹 생성</div>
       <div id="input">
@@ -27,12 +27,12 @@
           <div id="input_list">
             <div class="input_item">
               <label for="group_name">1. 그룹 이름</label>
-              <input type="text" id="group_name" name="name" />
+              <input type="text" id="group_name" name="groupName" />
             </div>
             <div class="input_item">
               <label for="description">2. 그룹 설명</label>
               <textarea
-                name="description"
+                name="groupDescription"
                 rows="2"
                 cols="50"
                 id="group_description"

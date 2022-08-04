@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="css/group.css" />
+    <link rel="stylesheet" href="/css/group.css" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -19,7 +19,7 @@
   </head>
 
   <body>
-    <header><span class="material-symbols-outlined"> home </span></header>
+    <header><span class="material-symbols-outlined" onclick="location.href='/'"> home </span></header>
     <main>
       <div id="page_name">그룹 수정</div>
       <div id="input">
@@ -27,12 +27,12 @@
           <div id="input_list">
             <div class="input_item">
               <label for="name">1. 그룹 이름</label>
-              <input type="text" id="group_name" name="name" />
+              <input type="text" id="group_name" name="groupName" />
             </div>
             <div class="input_item">
               <label for="description">2. 그룹 설명</label>
               <textarea
-                name="description"
+                name="groupDescription"
                 rows="2"
                 cols="50"
                 id="group_description"
@@ -57,6 +57,6 @@
     </main>
 
     <script src="http://code.jquery.com/jquery-3.5.1.min.js"></script>
-    <script type="text/javascript" src="js/make_group.js"></script>
+    <script type="text/javascript" src="/js/make_group.js"></script>
   </body>
 </html>

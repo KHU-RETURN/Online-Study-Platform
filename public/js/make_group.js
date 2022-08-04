@@ -23,21 +23,32 @@ if (accept_button) {
 } else if (make_button) {
   make_button.addEventListener("click", checkData);
 } else if (modify_button) {
-  fetch("http://localhost:3000/groups/5") //id로 불러옴
+  var url = window.location.href;
+  url = url.split("/");
+  const code = url[url.length - 1];
+  fetch("/api/modify_group/"+code) //id로 불러옴
     .then((response) => response.json())
     .then((data) => {
-      original_value = data;
-      group_name.value = original_value.name;
-      group_description.value = original_value.description;
-      group_color.value = original_value.color;
-      console.log(original_value);
+      if(data.success) {
+        original_value = data;
+        original_value.id = code;
+        group_name.value = original_value.groupName;
+        group_description.value = original_value.groupDescription;
+        group_color.value = original_value.color;
+        //console.log(original_value);
+      }
+      else{
+        alert("no owner");
+        location.href = "/";
+      }
+      
     });
   modify_button.addEventListener("click", checkData);
   delete_button.addEventListener("click", deleteGroup);
 }
 
 function joinGroup() {
-  location.href = "index.html?" + invitation_code.value; //경로 수정
+  //location.href = "index.html?" + invitation_code.value; //경로 수정
   // 받을 때
   /* 
     temp = location.href.split("?");
@@ -46,47 +57,57 @@ function joinGroup() {
     alert(code);
     
     */
+    fetch("/api/join_group", {
+      method: "POST",
+      body: JSON.stringify({code: invitation_code.value}),
+      headers: {
+        "content-type": "application/json",
+      },
+    })
+      .then((response) => response.text())
+      .then((text) => {
+        if(text==="no") alert("no valid code");
+        else location.href = "/";
+      })
 }
 
 function makeGroup() {
   var formData = new FormData(form);
   // 초대코드 추가하는 코드 있어야 함
   var group = serialize(formData);
-  console.log(JSON.stringify(group));
-  fetch("http://localhost:3000/groups", {
+  //console.log(JSON.stringify(group));
+  fetch("/api/make_group", {
     method: "POST",
     body: JSON.stringify(group),
     headers: {
       "content-type": "application/json",
     },
   })
-    .then((response) => response.json())
-    .then((json) => console.log(json));
+    .then((response) => location.href = "/")
+
 }
 
 function modifyGroup() {
   var formData = new FormData(form);
   var group = serialize(formData);
 
-  fetch("http://localhost:3000/groups/" + original_value.id, {
+  fetch("/api/modify_group/" + original_value.id, {
     method: "PUT",
     body: JSON.stringify(group),
     headers: {
       "content-type": "application/json",
     },
   })
-    .then((response) => response.json())
-    .then((json) => console.log(json));
+   .then((response) => location.href = "/")
 }
 
 function deleteGroup() {
   var con_test = confirm(original_value.name + " 그룹을 삭제하시겠습니까?");
   if (con_test == true) {
-    fetch("http://localhost:3000/groups/" + original_value.id, {
+    fetch("/api/delete_group/" + original_value.id, {
       method: "DELETE",
     })
-      .then((response) => response.json())
-      .then((json) => console.log(json));
+    .then((response) => location.href = "/")
   }
 }
 
