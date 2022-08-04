@@ -24,6 +24,20 @@ h1{
     font-size: 1rem;
     padding: 10px;
 }
+header .container_box{
+    
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100vw;
+    margin: 0;
+}
+header button{
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    padding-right: 25px;
+}
 /*프로필 사진*/
 #circle{
     position: absolute;

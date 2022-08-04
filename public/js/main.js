@@ -6,7 +6,7 @@ const profile = document.getElementById("circle");
 const id = "msm4167";
 
 //id로 값 가져오기
-const getGroupInfo = fetch(`http://localhost:3000/main/${id}`)
+const getGroupInfo = fetch(`http://localhost:5000/main/${id}`)
 .then((response)=>response.json())
 .then((response)=>{
     let originalData = response;
