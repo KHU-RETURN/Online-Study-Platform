@@ -53,7 +53,7 @@ router.post('/join_group', async function (req, res) {
   try {
     var group = await groupModel.findOne({ _id: req.body.code });
     if (!group) return res.send("no");
-    group.groupMember = [{ id: user.id }];
+    group.groupMember.push({ id: user.id });
     await groupModel.findByIdAndUpdate(req.body.code, group);
 
     user.groups.push({ id: req.body.code, owner: false, });
