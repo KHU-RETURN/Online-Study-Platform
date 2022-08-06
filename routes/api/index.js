@@ -22,7 +22,7 @@ router.get('/main', async function (req, res) {
     result.groupExplain.push(group.groupDescription);
     result.groupNumber.push(group.groupMember.length);
     result.color.push(group.color);
-    result.pageLink.push("/groups/"+groupArr[i].id);
+    result.pageLink.push("/group?id="+groupArr[i].id);
   }
   res.send(result);
 });
