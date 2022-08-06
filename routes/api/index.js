@@ -27,6 +27,16 @@ router.get('/main', async function (req, res) {
   res.send(result);
 });
 
+router.get('/group/:id', async function (req, res) {
+  const group = await groupModel.findById(req.params.id);
+  var result = {};
+  result.name = group.groupName;
+  result.description = group.groupDescription;
+  result.color = group.color;
+
+  res.send(result);
+});
+
 router.post('/edit_profile_image', async function (req, res) {
     await userModel.findOneAndUpdate({ id: req.session.user.id }, {photos:req.body.image});
 });

@@ -42,4 +42,15 @@ router.get('/make_group', async function (req, res) {
     }
 });
 
+router.get("/group", async function (req, res, next) {
+  if (!req.session.user)
+      res.render('before_login/index.html');
+  else {
+      var dbUser = await userModel.findOne({ id: req.session.user.id });
+      req.session.user = dbUser;
+      res.render('check_group/index.html', { user: req.session.user });
+  }
+});
+
+
 module.exports = router;
