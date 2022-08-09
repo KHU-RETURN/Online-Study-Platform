@@ -1,0 +1,70 @@
+{
+  "users": [
+    {
+      "id": 1,
+      "user_name": "정주희",
+      "profile_image": "images/00.png",
+      "groups": [
+        {
+          "id": "gLindsey",
+          "group_name": "g Lindsey",
+          "owner": "정주희"
+        },
+        {
+          "id": "gdfdfd",
+          "group_name": "g dldd",
+          "owner": "people"
+        },
+        {
+          "id": "hhh",
+          "group_name": "group11",
+          "owner": "정주희"
+        }
+      ]
+    }
+  ],
+  "groups": [
+    {
+      "name": "hello",
+      "description": "하이하이",
+      "color": "#c65858",
+      "id": "5"
+    },
+    {
+      "name": "group11",
+      "description": "ㅎㅎ",
+      "color": "#607f0b",
+      "id": "hhh"
+    },
+    {
+      "name": "안녕",
+      "description": "하세요",
+      "color": "#ddeeaf",
+      "id": "iXTeibe"
+    },
+    {
+      "name": "ㅇㅇ",
+      "description": "ㅇㅇ",
+      "color": "#ddeeaf",
+      "id": "AwEyMwV"
+    },
+    {
+      "name": "ㅇㅇ2",
+      "description": "ㅇㅇ2",
+      "color": "#ddeeaf",
+      "id": "k15qy4c"
+    },
+    {
+      "name": "ㅇㅇ",
+      "description": "ㅇㅇ",
+      "color": "#ddeeaf",
+      "id": "ln3Youk"
+    },
+    {
+      "name": "주희",
+      "description": "주히에요",
+      "color": "#0a5c7f",
+      "id": "gHtwMYB"
+    }
+  ]
+}
