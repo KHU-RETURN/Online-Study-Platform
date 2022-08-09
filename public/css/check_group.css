@@ -26,6 +26,14 @@ header {
   padding: 20px 24px;
 }
 
+footer {
+  display: flex;
+  justify-content: center;
+  margin: 20px;
+  color: white;
+  font-size: var(--font-sm);
+}
+
 .material-symbols-outlined {
   background-color: var(--point-color);
   padding: 10px;
@@ -37,28 +45,6 @@ header {
 .material-symbols-outlined:hover {
   cursor: pointer;
   opacity: 0.9;
-}
-
-.container {
-  height: 90vh;
-  width: 100vw;
-
-  position: fixed;
-  bottom: 0;
-
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-
-  background: linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.8)),
-    url("/images/bg.jpg") bottom left;
-  background-repeat: repeat-x;
-  height: 100%;
-  left: 0;
-  opacity: 1;
-  position: fixed;
-  top: 0;
-  z-index: -1;
 }
 
 .group_name {
@@ -110,4 +96,26 @@ header {
   background-color: var(--point-color);*/
   color: var(--point-color);
   background-color: white;
+}
+
+#wrapper {
+  height: 90vh;
+  width: 100vw;
+
+  /*position: fixed;*/
+  bottom: 0;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+
+  background: linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.8)),
+    url("/images/bg.jpg") bottom left;
+  background-repeat: repeat-x;
+  height: 100%;
+  left: 0;
+  opacity: 1;
+  position: fixed;
+  top: 0;
+  z-index: -1;
 }

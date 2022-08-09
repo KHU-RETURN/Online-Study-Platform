@@ -1,10 +1,11 @@
-var group_name = document.getElementById("group_name");
-var description = document.getElementById("description");
-var icons = document.getElementsByClassName("material-symbols-outlined");
-var nav = document.getElementById("nav");
-var nav_items = document.getElementsByClassName("nav-item");
-var id = getParameter("id");
-var code = getParameter("code");
+const group_name = document.getElementById("group_name");
+const description = document.getElementById("description");
+const icons = document.getElementsByClassName("material-symbols-outlined");
+const nav = document.getElementById("nav");
+const nav_items = document.getElementsByClassName("nav-item");
+const id = getParameter("id");
+const code = getParameter("code");
+const footer = document.getElementById("footer");
 
 /*
 console.log(location.href);
@@ -18,16 +19,16 @@ alert(code);
 if (id) {
   loadGroup("/" + id);
 } else if (code) {
-  loadGroup("?code=" + code);
+  loadGroup("/" + code);
 }
 
-function loadGroup(url) {
-  fetch("http://localhost:5000/groups" + url) //id로 불러옴
+function loadGroup(id) {
+  fetch("http://localhost:5000/groups" + id) //id로 불러옴
     .then((response) => response.json())
     .then((data) => {
       if (data.length) {
         //배열이 넘어오면
-        original_value = data[0]; //배열 데이터. 일치하는 모든 데이터가 불러와짐. 실제로 데이터 불러올 때는 하나만 가져올거니까 -> [0] 없애면 됨.
+        original_value = data[0];
       } else {
         original_value = data;
       }
@@ -46,6 +47,7 @@ function loadGroup(url) {
           original_value.color
         );
       }
+      displayCode(original_value.id);
       console.log(original_value);
     });
 }
@@ -62,9 +64,14 @@ function getParameter(name) {
 function getTextColorByBackgroundColor(hexColor) {
   const c = hexColor.substring(1);
   const rgb = parseInt(c, 16);
-  const r = (rgb >> 16) & 0xff; // red 추출
-  const g = (rgb >> 8) & 0xff; // green 추출
-  const b = (rgb >> 0) & 0xff; // blue 추출
-  const luma = 0.2126 * r + 0.7152 * g + 0.0722 * b; // per ITU-R BT.709     // 색상 선택
-  return luma < 127.5 ? "white" : "black"; // 글자색이}
+  const r = (rgb >> 16) & 0xff;
+  const g = (rgb >> 8) & 0xff;
+  const b = (rgb >> 0) & 0xff;
+  const luma = 0.2126 * r + 0.7152 * g + 0.0722 * b;
+  return luma < 127.5 ? "white" : "black";
+}
+
+function displayCode(id) {
+  const code = `<span>초대코드&nbsp; &nbsp; ${id}</span>`;
+  footer.innerHTML = code;
 }
