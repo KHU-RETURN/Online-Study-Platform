@@ -67,7 +67,8 @@ function joinGroup() {
       .then((response) => response.text())
       .then((text) => {
         if(text==="no") alert("no valid code");
-        else location.href = "/";
+        else if(text=="already") alert("이미 가입된 그룹입니다");
+        else location.href = "/group?id="+invitation_code.value;
       })
 }
 

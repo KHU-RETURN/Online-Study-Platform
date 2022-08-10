@@ -60,7 +60,10 @@ header button{
     border-radius: 50px 50px 0 0;
     background: #FFFFFF;
     box-shadow: 1px -1px 25px -2px rgba(0, 0, 0, 0.14);
-    min-height: 575px;
+    height: 90vh; /* 구식 브라우저를 위한 대비책(fallback) */
+    height: -webkit-calc(100% - 70px); /* for Chrome, Safari */
+    height: -moz-calc(100% - 70px); /* for Firefox */
+    height: calc(100% - 70px); /* for IE */
     position: absolute;
 }
 .material-symbols-outlined{

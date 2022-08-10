@@ -27,6 +27,18 @@ router.get('/main', async function (req, res) {
   res.send(result);
 });
 
+router.get('/get_user', async function (req, res) {
+  var result = {};
+  result.name = req.session.user.displayName;
+  result.profileImage = req.session.user.photos;
+  result.groups = req.session.user.groups;
+  for (var i = 0; i < result.groups.length; i++) {
+    var group = await groupModel.findById(result.groups[i].id);
+    result.groups[i].groupName = group.groupName;
+  }
+  res.send(result);
+});
+
 router.get('/group/:id', async function (req, res) {
   const group = await groupModel.findById(req.params.id);
   var result = {};
@@ -63,6 +75,7 @@ router.post('/join_group', async function (req, res) {
   try {
     var group = await groupModel.findOne({ _id: req.body.code });
     if (!group) return res.send("no");
+    if (user.groups.find((item) => { return (item.id == req.body.code) })) return res.send("already");
     group.groupMember.push({ id: user.id });
     await groupModel.findByIdAndUpdate(req.body.code, group);
 
@@ -72,6 +85,16 @@ router.post('/join_group', async function (req, res) {
   } catch (error) {
     return res.send("no");
   }
+});
+
+router.delete('/exit_group/:code', async function (req, res) {
+  var user = await userModel.findOne({ id: req.session.user.id });
+  var group = await groupModel.findById(req.params.code);
+  group.groupMember.pop(group.groupMember.findIndex((item)=> { return (item.id == req.params.code) }));
+  await groupModel.findByIdAndUpdate(req.params.code, group);
+  user.groups.pop(user.groups.find((item)=> { return (item.id == req.params.code) }));
+  await userModel.findOneAndUpdate({id: user.id}, user);
+  res.send("finish");
 });
 
 router.put('/modify_group/:code', async function (req, res) {
@@ -105,6 +128,8 @@ router.delete('/delete_group/:code', async function (req, res) {
   })
   await groupModel.findByIdAndDelete(req.params.code);
 });
+
+
 
 
 module.exports = router;

@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="/css/check_group.css" />
+    <link rel="stylesheet" href="css/check_group.css" />
     <link
       rel="stylesheet"
       href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0"
@@ -19,17 +19,24 @@
       href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500&display=swap"
       rel="stylesheet"
     />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0"
+    />
     <title>onlstuides</title>
   </head>
   <body>
-    <div class="wrapper">
+    <div id="wrapper">
       <header>
-        <span class="material-symbols-outlined" onclick="location.href='/'"> home </span>
-        <span class="material-symbols-outlined"> settings </span>
+        <span class="material-symbols-outlined" id="exit_group"> logout </span>
+        <div class="right-icons">
+          <span class="material-symbols-outlined" onclick="location.href='/'"> home </span>
+          <span class="material-symbols-outlined"> settings </span>
+        </div>
       </header>
 
       <div class="container">
-        <div class="group_name" id="group_name">그룹이름</div>
+        <div class="group_name" id="group_name">group name</div>
         <div class="description" id="description">그룹 설명</div>
         <ul class="nav" id="nav">
           <li class="nav-item">목록</li>
@@ -40,7 +47,8 @@
           <li class="nav-item">목표 달성률</li>
         </ul>
       </div>
+      <footer id="footer">초대코드</footer>
     </div>
-    <script type="text/javascript" src="/js/check_group.js"></script>
+    <script type="text/javascript" src="js/check_group.js"></script>
   </body>
 </html>
