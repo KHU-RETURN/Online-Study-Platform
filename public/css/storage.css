@@ -1,0 +1,54 @@
+:root {
+  --font-xs: 12px;
+  --font-sm: 14px;
+  --font-base: 16px;
+  --font-lg: 18px;
+  --font-xl: 20px;
+  --dark-gray: #efefef;
+  --light-gray: #f9f9f9;
+  --main-color: #ddeeaf;
+  --point-color: #677e25;
+}
+
+html,
+body {
+  font-family: "Noto Sans KR", sans-serif;
+  margin: 0;
+}
+
+header {
+  color: var(--point-color);
+  font-size: var(--font-xl);
+  font-weight: 700;
+  margin: 60px 0px 46px 46px;
+}
+
+button {
+  font-family: "Noto Sans KR", sans-serif;
+  font-size: var(--font-sm);
+  font-weight: 300;
+  background-color: var(--light-gray);
+  /*box-shadow: 0px 0px 2px rgba(0, 0, 0, 0.25);*/
+  border-radius: 20px;
+  border: none;
+
+  padding: 17px 35px;
+  margin: 19px 18px 43px 0px;
+
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+}
+
+button:hover {
+  cursor: pointer;
+}
+
+#contents {
+  margin: 0px 46px;
+}
+
+.date {
+  font-weight: 400;
+  font-size: var(--font-sm);
+}
