@@ -20,7 +20,7 @@ header {
   color: var(--point-color);
   font-size: 28px;
   font-weight: 700;
-  margin: 60px 0px 46px 46px;
+  margin: 30px 0px 46px 46px;
 }
 
 #title_button {
@@ -41,10 +41,40 @@ header {
 }
 
 #contents {
-  margin: 0px 68px;
+  margin: 0px 60px;
 }
 
 .date {
   font-weight: 400;
   font-size: var(--font-sm);
 }
+
+#modify_contents_button {
+  background-color: var(--point-color);
+  color: white;
+  font-size: var(--font-base);
+}
+
+#info {
+  margin: 0px 0px 15px 0px;
+  font-size: var(--font-base);
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/*.ql-toolbar {
+  width: 50%;
+}*/
+
+.ql-container.ql-snow {
+  background-color: var(--light-gray);
+  border: none !important;
+  /*width: 50%;*/
+}
+
+/*#meeting {
+  display: flex;
+  flex-direction: column;
+}*/
