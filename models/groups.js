@@ -22,12 +22,19 @@ const groupSchema = new mongoose.Schema({
         record: String,
         chat: [{
             id: String,
-            message: String
+            message: String,
+            date: Date,
         }]
+    }],
+    chat: [{
+        id: String,
+        message: String,
+        date: Date,
     }],
     fine: [{
         date: Date,
         id: String,
+        fine: Number,
     }],
     todo: [{
         text: String,

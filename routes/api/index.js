@@ -39,12 +39,22 @@ router.get('/get_user', async function (req, res) {
   res.send(result);
 });
 
+router.get('/get_user/:id', async function (req, res) {
+  var result = {};
+  var user = await userModel.findOne({ id: req.params.id });
+  result.displayName = user.displayName;
+  result.photos = user.photos;
+  res.send(result);
+});
+
 router.get('/group/:id', async function (req, res) {
   const group = await groupModel.findById(req.params.id);
   var result = {};
   result.name = group.groupName;
   result.description = group.groupDescription;
   result.color = group.color;
+  result.groupMember = group.groupMember;
+  result.conference = group.conference;
 
   res.send(result);
 });
@@ -129,7 +139,21 @@ router.delete('/delete_group/:code', async function (req, res) {
   await groupModel.findByIdAndDelete(req.params.code);
 });
 
+router.get('/get_chat', async function (req, res) {
+  var result = {};
+  const groupId = req.session.groupId;
+  var currGroup = await groupModel.findById(groupId);
+  result = currGroup.chat;
+  res.send(result);
+});
 
-
+router.get('/get_conference/:confId', async function (req, res) {
+  var result = {};
+  const groupId = req.session.groupId;
+  var currGroup = await groupModel.findById(groupId);
+  const confId = req.params.confId;
+  result = currGroup.conference.find((item)=> {return item._id.toString() === confId});
+  res.send(result);
+});
 
 module.exports = router;

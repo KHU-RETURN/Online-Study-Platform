@@ -48,6 +48,8 @@ router.get("/group", async function (req, res, next) {
     else {
         var dbUser = await userModel.findOne({ id: req.session.user.id });
         req.session.user = dbUser;
+        const { id } = req.query;
+        req.session.groupId = id;
         res.render('check_group/index.html', { user: req.session.user });
     }
 });
@@ -59,6 +61,69 @@ router.get("/user_setting", async function (req, res, next) {
         var dbUser = await userModel.findOne({ id: req.session.user.id });
         req.session.user = dbUser;
         res.render('user_set/index.html', { user: req.session.user });
+    }
+});
+
+router.get("/todo", async function (req, res, next) {
+    if (!req.session.user) res.render("before_login/index.html");
+    else {
+        var dbUser = await userModel.findOne({ id: req.session.user.id });
+        req.session.user = dbUser;
+        res.render("todo/index.html", { user: req.session.user });
+    }
+});
+
+router.get("/schedule", async function (req, res, next) {
+    if (!req.session.user) res.render("before_login/index.html");
+    else {
+        var dbUser = await userModel.findOne({ id: req.session.user.id });
+        req.session.user = dbUser;
+        res.render("schedule/index.html", { user: req.session.user });
+    }
+});
+
+router.get("/chat", async function (req, res, next) {
+    if (!req.session.user) res.render("before_login/index.html");
+    else {
+        var dbUser = await userModel.findOne({ id: req.session.user.id });
+        req.session.user = dbUser;
+        res.render("chat/index.html", { user: req.session.user });
+    }
+});
+
+router.get("/storage", async function (req, res, next) {
+    if (!req.session.user) res.render("before_login/index.html");
+    else {
+        var dbUser = await userModel.findOne({ id: req.session.user.id });
+        req.session.user = dbUser;
+        res.render("storage/index.html", { user: req.session.user });
+    }
+});
+
+router.get("/storage_detail", async function (req, res, next) {
+    if (!req.session.user) res.render("before_login/index.html");
+    else {
+        var dbUser = await userModel.findOne({ id: req.session.user.id });
+        req.session.user = dbUser;
+        res.render("storage_detail/index.html", { user: req.session.user });
+    }
+});
+
+router.get("/fine", async function (req, res, next) {
+    if (!req.session.user) res.render("before_login/index.html");
+    else {
+        var dbUser = await userModel.findOne({ id: req.session.user.id });
+        req.session.user = dbUser;
+        res.render("fine/index.html", { user: req.session.user });
+    }
+});
+
+router.get("/goal", async function (req, res, next) {
+    if (!req.session.user) res.render("before_login/index.html");
+    else {
+        var dbUser = await userModel.findOne({ id: req.session.user.id });
+        req.session.user = dbUser;
+        res.render("goal/index.html", { user: req.session.user });
     }
 });
 
