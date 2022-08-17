@@ -20,7 +20,7 @@ header {
   color: var(--point-color);
   font-size: 28px;
   font-weight: 700;
-  margin: 30px 0px 46px 46px;
+  margin: 30px 0px 30px 46px;
 }
 
 #title_button {
@@ -41,12 +41,12 @@ header {
 }
 
 #contents {
-  margin: 0px 60px;
+  margin: 0px 0px 0px 60px;
 }
 
-.date {
-  font-weight: 400;
-  font-size: var(--font-sm);
+#date {
+  font-weight: 500;
+  font-size: var(--font-base);
 }
 
 #modify_contents_button {
@@ -71,6 +71,7 @@ header {
 .ql-container.ql-snow {
   background-color: var(--light-gray);
   border: none !important;
+  height: 70vh;
   /*width: 50%;*/
 }
 
@@ -78,3 +79,55 @@ header {
   display: flex;
   flex-direction: column;
 }*/
+
+#chatting {
+  margin: 10px;
+  display: flex;
+  flex-direction: column;
+  height: 75vh;
+  overflow-y: scroll;
+  font-size: var(--font-base);
+}
+
+#chatting::-webkit-scrollbar {
+  display: none; /* Chrome, Safari, Opera*/
+}
+
+.chat_left {
+  margin: 20px;
+  align-self: flex-start;
+}
+.chat_left > .message {
+  padding: 10px;
+  margin: 5px;
+  border-radius: 10px;
+  background-color: var(--dark-gray);
+}
+
+.chat_right {
+  margin: 20px;
+  align-self: flex-end;
+}
+
+.chat_right > .message {
+  padding: 10px;
+  margin: 5px;
+  border-radius: 10px;
+  background-color: var(--main-color);
+}
+
+#circle {
+  width: 25px;
+  height: 25px;
+  background-color: #ffffff;
+  border-radius: 50%;
+}
+
+.content {
+  margin: 0;
+  padding: 0;
+}
+
+.ql-editor::-webkit-scrollbar {
+  display: none; /* Chrome, Safari, Opera*/
+}
