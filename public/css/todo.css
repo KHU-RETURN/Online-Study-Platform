@@ -254,6 +254,6 @@ header{
     padding: 0;
     width: 33vw;
 }
-#check-list.members .input-group{
+#check-list.member-list .input-group{
     padding-right: 10px;
 }

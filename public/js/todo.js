@@ -52,6 +52,12 @@ function calendarInit() {
     // 캘린더 렌더링
     renderCalender(thisMonth);
 
+    //시작화면부터 띄워야할 값들
+    loadList(currentYear, currentMonth, currentDate); //기존에 저장돼있던 리스트 
+    dateBox(currentYear, currentMonth, currentDate); //현재 날짜 기준으로 날짜박스 생성
+    lengthCheck(); //리스트 길이 체크
+    checkedCount(); //체크된 리스트 개수
+
     function renderCalender(thisMonth) {
         // 렌더링을 위한 데이터 정리
         currentYear = thisMonth.getFullYear();
@@ -96,11 +102,6 @@ function calendarInit() {
         }
     }
 
-    loadList(currentYear, currentMonth, currentDate);
-    dateBox(currentYear, currentMonth, currentDate);
-    lengthCheck();
-    checkedCount();
-
     // 이전달로 이동
     $('.go-prev').on('click', function () {
         thisMonth = new Date(currentYear, currentMonth - 1, 1);
@@ -134,12 +135,15 @@ function choiceDate() {
         once = 0;
         //버튼 클릭 시 선택된 날짜대로 날짜 생성
         $('.btn-primary').click(function () {
-            if(once == 0){
+            if (once == 0) {
                 currentDate = dateText;
                 // console.log(dateText);
                 $('.list-item').remove();
+                $('.dropdown').remove();
                 loadList(currentYear, currentMonth, currentDate);
                 dateBox(currentYear, currentMonth, currentDate);
+                lengthCheck();
+                checkedCount();
                 once++;
             }
         });
@@ -150,9 +154,10 @@ function choiceDate() {
 $('#nav-before').click(function () {
     currentDate = Number(currentDate);
     currentDate = currentDate - 1
-    $('.list-item').remove();
-    loadList(currentYear, currentMonth, currentDate);
-    dateBox(currentYear, currentMonth, currentDate);
+    $('.list-item').remove(); //다른 날짜의 리스트 제거
+    $('.dropdown').remove(); //다른 날짜의 다른 멤버 리스트 제거
+    loadList(currentYear, currentMonth, currentDate); //날짜 바뀔 때마다 기존 리스트 불러옴
+    dateBox(currentYear, currentMonth,currentDate); //날짜 변경시 날짜박스의 날짜도 변경
     lengthCheck();
     checkedCount();
 });
@@ -160,8 +165,10 @@ $('#nav-after').click(function () {
     currentDate = Number(currentDate);
     currentDate = currentDate + 1
     $('.list-item').remove();
+    $("#mb-todo").children().remove();
+
     loadList(currentYear, currentMonth, currentDate);
-    dateBox(currentYear, currentMonth, currentDate);
+    dateBox(currentYear, currentMonth ,currentDate);
     lengthCheck();
     checkedCount();
 });
@@ -281,12 +288,12 @@ function addList(text, checked, date, _id) {
 
 //할 일 개수 세기
 function lengthCheck() {
-    var length = $(".input-group.mb-3").length;
+    var length = $(".input-group.mb-3.list-item").length;
     $("#list-number").text(length);
 }
 //한 일 개수 세기
 function checkedCount() {
-    var checked = $("button[value = true]").length;
+    var checked = $(".list-item button[value = true]").length;
     $("#success").text(checked);
 }
 
@@ -313,8 +320,10 @@ function loadList(currentYear, currentMonth, currentDate) {
             const userId = member[0].id;
             member.splice(0, 1);
             var memberNumber = member.length;
+            var count = 0;
 
             for (var i = 0; i < memberNumber; i++) {
+                var todayTime = currentYear + "년 " + Number(currentMonth + 1) + "월 " + currentDate + "일";
                 //id가 user id일 경우
                 if (member[i].id == userId) {
                     //todolist
@@ -322,8 +331,6 @@ function loadList(currentYear, currentMonth, currentDate) {
                     _myTodoList = myTodo;
                     // console.log(_myTodoList);
                     //선택된 날짜 년월일
-                    var todayTime = currentYear + "년 " + Number(currentMonth + 1) + "월 " + currentDate + "일";
-                    // console.log(todayTime);
 
                     for (var j = 0; j < myTodo.length; j++) {
                         var myTodoDate = myTodo[j].date;
@@ -338,8 +345,21 @@ function loadList(currentYear, currentMonth, currentDate) {
                         }
                     }
                 } else {
-                    var memberTodo = member[i].todo;
-                    // console.log(memberTodo);
+                    var memberName = member[i].name; //멤버 이름
+                    var memberTodo = member[i].todo; //멤버 투두리스트
+
+                    addMemberList(memberName); //멤버 수만큼 버튼 추가
+
+                    for (var j = 0; j < memberTodo.length; j++) {
+                        var memberTodoDate = memberTodo[j].date;
+                        if (memberTodoDate == todayTime) { //리스트 날짜랑 현재 선택된 날짜가 같을 때만 추가
+                            var memberTodoList = memberTodo[j].text;
+                            var memberTodoValue = memberTodo[j].checked;
+
+                            addMemberTask(memberTodoList, memberTodoValue, count); //리스트 추가
+                        }
+                    }
+                    count++;
                 }
             }
         })
@@ -375,4 +395,26 @@ function addMyList(listInfo) {
         addList(json.text, json.checked, json.date, json._id);
         lengthCheck();
     });
+}
+
+function addMemberList(name) {
+    var dropdownGroup = $("<div class='dropdown mb-4'></div>");
+    var dropdownButton = $("<button class='btn btn-secondary dropdown-toggle' id='dropbox' type='button' data-bs-toggle='dropdown' aria-expanded='false'></button>").text(name + "의 목표");
+    var dropdownMenu = $("<div class='dropdown-menu p-2 text-muted'></div>");
+    var memberList = $("<div id='check-list' id='member-list'></div>");
+
+
+    dropdownMenu.append(memberList);
+    dropdownGroup.append(dropdownButton, dropdownMenu);
+    $(dropdownGroup).appendTo("#mb-todo");
+}
+
+function addMemberTask(text, value, index) {
+    var inputGroup = $("<div class='input-group mb-3'></div>");
+    var form = $("<div class = 'form-control' aria-label='Example text with button addon' aria-describedby='button-addon1'></div>")
+    var task = $("<span id='task'></span>").text(text);
+    var check = $("<button class='material-symbols-outlined' type='button' id='check' value=" + value + ">check_circle</button>");
+    form.append(task);
+    inputGroup.append(check, form);
+    $(inputGroup).appendTo($('#mb-todo').children().eq(index).children().eq(1).children(":first"));
 }

@@ -205,7 +205,14 @@ router.get('/get_todo', async function (req, res) { // 벌금 목록 가져오�
   var userId = [{id: req.session.user.id}];
   const groupId = req.session.groupId;
   var currGroup = await groupModel.findById(groupId);
-  var groupMember = userId.concat(currGroup.groupMember);
+  var groupMember = [];
+  for(var i = 0; i < currGroup.groupMember.length; i++){
+    var prevObj = {id: currGroup.groupMember[i].id, todo: currGroup.groupMember[i].todo};
+    var user = await userModel.findOne({ id: currGroup.groupMember[i].id });
+    prevObj.name = user.displayName;
+    groupMember.push(prevObj);
+  }
+  var groupMember = userId.concat(groupMember);
   
   res.send(groupMember);
 });
