@@ -1,8 +1,73 @@
 {
+  "groupMember": [
+    {
+      "id": "1",
+      "name":"민수민",
+      "todo": [
+        {
+          "text": "과제1",
+          "date": "2022년 8월 10일",
+          "checked": "true"
+        },
+        {
+          "text": "과제2",
+          "date": "2022년 8월 10일",
+          "checked": "false"
+        },
+        {
+          "text": "과제3",
+          "date": "2022년 8월 18일",
+          "checked": "false"
+        }
+      ]
+    },
+    {
+      "id": "abc",
+      "name":"gsdafd",
+      "todo": [
+        {
+          "text": "과제a",
+          "date": "2022년 8월 18일",
+          "checked": "true"
+        },
+        {
+          "text": "과제b",
+          "date": "2022년 8월 18일",
+          "checked": "false"
+        },
+        {
+          "text": "과제c",
+          "date": "2022년 8월 10일",
+          "checked": "true"
+        }
+      ]
+    },
+    {
+      "id": "adfs",
+      "name":"sdaaat",
+      "todo": [
+        {
+          "text": "과제A",
+          "date": "2022년 8월 10일",
+          "checked": "true"
+        },
+        {
+          "text": "과제B",
+          "date": "2022년 8월 10일",
+          "checked": "true"
+        },
+        {
+          "text": "과제c",
+          "date": "2022년 8월 10일",
+          "checked": "true"
+        }
+      ]
+    }
+  ],
     "users": [
       {
         "id": 1,
-        "user_name": "정주희",
+        "user_name": "민수민",
         "profile_image": "images/default.png",
         "groups": [
           {
@@ -68,6 +133,78 @@
             "date": "8월13일"
           }
         ],
+        "groupMember": [
+          {
+            "id": "1",
+            "name":"민수민",
+            "todo": [
+              {
+                "text": "과제1",
+                "date": "2022년 8월 10일",
+                "checked": "true"
+              },
+              {
+                "text": "과제2",
+                "date": "2022년 8월 10일",
+                "checked": "false"
+              },
+              {
+                "text": "과제3",
+                "date": "2022년 8월 18일",
+                "checked": "false"
+              }
+            ]
+          },
+          {
+            "id": "abc",
+            "name":"gsdafd",
+            "todo": [
+              {
+                "text": "과제a",
+                "date": "2022년 8월 18일",
+                "checked": "true"
+              },
+              {
+                "text": "과제b",
+                "date": "2022년 8월 18일",
+                "checked": "false"
+              },
+              {
+                "text": "과제c",
+                "date": "2022년 8월 10일",
+                "checked": "true"
+              }
+            ]
+          },
+          {
+            "id": "adfs",
+            "name":"sdaaat",
+            "todo": [
+              {
+                "text": "과제A",
+                "date": "2022년 8월 10일",
+                "checked": "true"
+              },
+              {
+                "text": "과제B",
+                "date": "2022년 8월 10일",
+                "checked": "false"
+              },
+              {
+                "text": "과제C",
+                "date": "2022년 8월 10일",
+                "checked": "true"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "groupName": "ㅎㅎ",
+        "groupDescription": "ㅋㅋ",
+        "color": "#607f0b",
+        "id": "CWa_U8W",
+        "code": "62e8e8bc7b0b98af2f7d2222",
         "fine":[{
           "date":"8월11일",
           "id":"정주희",

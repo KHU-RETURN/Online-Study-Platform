@@ -3,7 +3,6 @@ $(document).ready(function() {
     choiceDate();
 });
 
-
 var thisMonth;
 
 var currentYear;
@@ -29,6 +28,7 @@ var dateText;
     전월 마지막일 날짜와 요일
 */
 
+//달력 생성하는 함수
 function calendarInit() {
 
     // 날짜 정보 가져오기
@@ -49,6 +49,12 @@ function calendarInit() {
 
     // 캘린더 렌더링
     renderCalender(thisMonth);
+
+    //시작화면부터 띄워야할 값들
+    loadList(currentYear, currentMonth, currentDate); //기존에 저장돼있던 리스트 
+    dateBox(currentYear, currentMonth ,currentDate); //현재 날짜 기준으로 날짜박스 생성
+    lengthCheck(); //리스트 길이 체크
+    checked(); //체크된 리스트 개수
 
     function renderCalender(thisMonth) {
         // 렌더링을 위한 데이터 정리
@@ -92,13 +98,8 @@ function calendarInit() {
             var currentMonthDate = document.querySelectorAll('.dates .current-month');
             currentMonthDate[todayDate -1].setAttribute('id', 'today');
         }
-        console.log("렌더링 완료");
+        //console.log("렌더링 완료");
     }
-
-    loadList(currentYear, currentMonth, currentDate);
-    dateBox(currentYear, currentMonth ,currentDate);
-    lengthCheck();
-    checked();
 
     // 이전달로 이동
     $('.go-prev').on('click', function() {
@@ -113,11 +114,34 @@ function calendarInit() {
     });
 }
 
-//버튼 동적으로 생성 -> on 사용
+//이전, 이후 버튼 클릭으로 날짜 변경
+$('#nav-before').click(function(){
+    currentDate = Number(currentDate);
+    currentDate = currentDate - 1
+    $('.list-item').remove(); //다른 날짜의 리스트 제거
+    $('.dropdown').remove(); //다른 날짜의 다른 멤버 리스트 제거
+    loadList(currentYear, currentMonth, currentDate); //날짜 바뀔 때마다 기존 리스트 불러옴
+    dateBox(currentYear, currentMonth,currentDate); //날짜 변경시 날짜박스의 날짜도 변경
+    lengthCheck();
+    checked();
+});
+$('#nav-after').click(function(){
+    currentDate = Number(currentDate);
+    currentDate = currentDate + 1
+    $('.list-item').remove();
+    $("#mb-todo").children().remove();
+
+    loadList(currentYear, currentMonth, currentDate);
+    dateBox(currentYear, currentMonth ,currentDate);
+    lengthCheck();
+    checked();
+});
+
+//선택된 날짜로 날짜박스 생성하는 함수
 function choiceDate() {
     //날짜 선택시 선택된 날짜 표시
-    $('.dates').on('click', 'button.day.current-month',function(){
-        $('button.day.current-month').css({
+    $('.dates').on('click', 'button.day.current-month',function(){ //버튼 동적으로 생성 -> on 사용
+        $('button.day.current-month').css({ //날짜 선택시 선택된 날짜 버튼 색깔 바뀜
             "color":"#999",
             "background-color":"#ffffff"});
         $('.day.current-month:nth-child(7n -1)').css({"color": "#3c6ffa"});
@@ -141,34 +165,13 @@ function choiceDate() {
 });
 }
 
-//이전, 이후 버튼 클릭으로 날짜 변경
-$('#nav-before').click(function(){
-    currentDate = Number(currentDate);
-    currentDate = currentDate - 1
-    $('.list-item').remove();
-    loadList(currentYear, currentMonth, currentDate);
-    dateBox(currentYear, currentMonth,currentDate);
-    lengthCheck();
-    checked();
-});
-$('#nav-after').click(function(){
-    currentDate = Number(currentDate);
-    currentDate = currentDate + 1
-    $('.list-item').remove();
-    loadList(currentYear, currentMonth, currentDate);
-    dateBox(currentYear, currentMonth ,currentDate);
-    lengthCheck();
-    checked();
-});
-
 // datebox에 날짜 넣기
 function dateBox(currentYear, currentMonth ,currentDate){
     currentYear = Number(currentYear);
     currentMonth = Number(currentMonth);
     currentDate = Number(currentDate);
     
-    //원래 있던 날짜 제거
-    $('button.date').remove();
+    $('button.date').remove(); //원래 있던 날짜 제거
 
     //표시될 날짜 생성하기
     var yesterday = new Date(currentYear, currentMonth ,currentDate - 1 );
@@ -200,25 +203,26 @@ function dateBox(currentYear, currentMonth ,currentDate){
     $('<button class="date notToday">'+ tdbYesterdayMonth +'월 ' +tdbYesterdayDate + '일</button>').insertAfter('button#nav-before');
 }
 
-$("#todo-entry").on("keyup", function(e){
-    if(e.keyCode == 13 && $("#text-entry").val() != ""){
-      //리스트에 입력 값 넣기
+
+/* 투두리스트 영역*/
+//투두 리스트 생성
+$("#todo-entry").on("keyup", function(e){ //엔터시 입력된 값 투두리스트에 추가
+    if(e.keyCode == 13 && $("#text-entry").val() != ""){ // 입력된 값이 없을 경우 추가 안됨
         console.log("list");
         addList($("#text-entry").val(), false);
         lengthCheck();
     }
 })
 
-$("#button-addon2").on("click", function(){
-    if($("#text-entry").val() != ""){
-      //리스트에 입력 값 넣기
+$("#button-addon2").on("click", function(){ //추가 버튼 클릭 시 투두리스트에 추가
+    if($("#text-entry").val() != ""){ 
         console.log("list");
         addList($("#text-entry").val(), false);
         lengthCheck();
     }
 })
 
-//todo리스트에 추가
+//todo리스트에 추가하는 함수
 function addList(text, value){
     var inputGroup = $("<div class='input-group mb-3 list-item'></div>");
     var form = $("<div class='form-control', aria-label='Example text with button addon', aria-describedby='button-addon1'></div>");
@@ -256,46 +260,60 @@ function addList(text, value){
     $("#text-entry").val("");
 }
 
+function addMemberList(name){
+    var dropdownGroup = $("<div class='dropdown mb-4'></div>");
+    var dropdownButton = $("<button class='btn btn-secondary dropdown-toggle' id='dropbox' type='button' data-bs-toggle='dropdown' aria-expanded='false'></button>").text(name + "의 목표");
+    var dropdownMenu = $("<div class='dropdown-menu p-2 text-muted'></div>");
+    var memberList = $("<div id='check-list' id='member-list'></div>");
+
+
+    dropdownMenu.append(memberList);
+    dropdownGroup.append(dropdownButton, dropdownMenu);
+    $(dropdownGroup).appendTo("#mb-todo");
+}
+
+function addMemberTask(text, value, index){
+    var inputGroup = $("<div class='input-group mb-3'></div>");
+    var form = $("<div class = 'form-control' aria-label='Example text with button addon' aria-describedby='button-addon1'></div>")
+    var task = $("<span id='task'></span>").text(text);
+    var check = $("<button class='material-symbols-outlined' type='button' id='check' value=" + value + ">check_circle</button>");
+    form.append(task);
+    inputGroup.append(check, form);
+    $(inputGroup).appendTo($('#mb-todo').children().eq(index).children().eq(1).children(":first"));
+}
+
 //할 일 개수 세기
 function lengthCheck(){
-    var length = $(".input-group.mb-3").length;
+    var length = $(".input-group.mb-3.list-item").length;
     $("#list-number").text(length);
 }
 //한 일 개수 세기
 function checked(){
-    var checked = $("button[value = true]").length;
+    var checked = $(".list-item button[value = true]").length;
     $("#success").text(checked);
 }
 
 //todolist 등록하기
-//기존에 있던 리스트 불러오기
-var userId = fetch("http://localhost:5000/users")
+var userId = fetch("http://localhost:5000/users/1") //id로 불러오기
 .then((response) => response.json())
 .then((data) => {
     userId = data.id;
 });
 
-fetch('http://localhost:5000/groupMember')
-.then((response) => response.json())
-.then((data) => {
-    console.log(data);
-});
-
-
+//기존에 있던 리스트 불러오기
 function loadList(currentYear, currentMonth, currentDate){
     fetch("http://localhost:5000/groups/5")
     .then((response) => response.json())
     .then((data) => {
         var member = data.groupMember;
         var memberNumber = member.length;
+        var count = 0;
+
         for(var i = 0; i < memberNumber; i++){
-            //id가 user id일 경우
-            if(member[i].id == userId){
-                //todolist
-                var myTodo = member[i].todo;
+            if(member[i].id == userId){ //id가 user id일 경우
+                var myTodo = member[i].todo; //사용자 todolist
                 //선택된 날짜 년월일
                 var todayTime = currentYear + "년 " + Number(currentMonth+1) + "월 " + currentDate + "일";
-                console.log(todayTime);
 
                 for(var j = 0; j < myTodo.length; j++){
                     var myTodoDate = myTodo[j].date;
@@ -308,30 +326,24 @@ function loadList(currentYear, currentMonth, currentDate){
                         checked();
                     }
                 }
-            }else{
-                var memberTodo = member[i].todo;
+            }else{ //id가 멤버일 경우
+                var memberName = member[i].name; //멤버 이름
+                var memberTodo = member[i].todo; //멤버 투두리스트
+
+                addMemberList(memberName); //멤버 수만큼 버튼 추가
+
+                for(var j=0; j < memberTodo.length; j++){
+                    var memberTodoDate = memberTodo[j].date;
+                    if(memberTodoDate == todayTime){ //리스트 날짜랑 현재 선택된 날짜가 같을 때만 추가
+                        var memberTodoList = memberTodo[j].text;
+                        var memberTodoValue = memberTodo[j].checked;
+
+                        addMemberTask(memberTodoList, memberTodoValue, count); //리스트 추가
+                    }
+                }
+                count++;
             }
         }
     })
 }
 
-function addListToServer(){
-    const listInfo =  {
-        "groupMember":[
-        {
-            "id": "123",
-            "todo": [
-            {
-                "text": "과제1",
-                "date": "2022년 8월 10일",
-                "checked": "true"
-            }]
-    }]}
-    fetch("http://localhost:5000/groupMember?id="+userId,{
-            method: "POST",
-            body: JSON.stringify(listInfo),
-            headers: {
-                "content-type": "application/json; charset=UTF-8"
-            }
-    }).then(response => response.json()).then((json)=> console.log(json));
-}
