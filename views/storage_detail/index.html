@@ -22,10 +22,15 @@
       integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx"
       crossorigin="anonymous"
     />
+    <link
+      href="https://cdn.quilljs.com/1.3.6/quill.snow.css"
+      rel="stylesheet"
+    />
     <title>onlstuides</title>
   </head>
   <body>
-    <nav class="navbar navbar-expand-md navbar-light pt-0">
+    <nav class="navbar navbar-expand-md navbar-light py-0">
+      <!-- pt -> py 변경 -->
       <div id="sidebar">
         <div class="container-fluid">
           <div class="row">
@@ -46,10 +51,7 @@
                 </div>
                 <ul class="navbar-nav flex-column mt-4">
                   <li class="nav-item">
-                    <a
-                      href="#"
-                      class="nav-link text-#657D24 p-2 mb-4 sidebar-link"
-                    >
+                    <a href="#" class="nav-link p-2 mb-4 sidebar-link">
                       Todo
                     </a>
                     <a href="#" class="nav-link p-2 mb-4 sidebar-link">
@@ -72,17 +74,28 @@
               </div>
             </div>
             <!--content-->
-            <div class="col-10 ml-auto py-2 content">
+            <div class="col-10 ml-auto content">
               <div>
                 <!-- 각자 코드 -->
                 <header>저장소 상세페이지</header>
-                <div id="contents">
-                  <div id="meeting">
+                <div id="contents" class="row">
+                  <div id="meeting" class="col-7">
                     <div id="info">
-                      <span id="date">2022년 8월 10일</span>
-                      <span id="title">1차 회의록 작성</span>
+                      <div class="left_info">
+                        <span id="date">2022년 8월 10일</span>
+                        <span id="title">1차 회의록</span>
+                      </div>
+                      <button
+                        type="button"
+                        id="modify_contents_button"
+                        class="btn"
+                      >
+                        수정하기
+                      </button>
                     </div>
+                    <div id="editor"></div>
                   </div>
+                  <div id="chatting" class="col-4"></div>
                 </div>
               </div>
             </div>
@@ -90,6 +103,7 @@
         </div>
       </div>
     </nav>
+    <script src="https://cdn.quilljs.com/1.3.6/quill.js"></script>
     <script type="text/javascript" src="js/storage_detail.js"></script>
     <script type="text/javascript" src="js/sidebar.js"></script>
   </body>

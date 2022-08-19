@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="css/sidebar.css" />
-    <link rel="stylesheet" href="css/storage.css" />
+    <link rel="stylesheet" href="css/add_penalty.css" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -48,7 +48,7 @@
                   <li class="nav-item">
                     <a
                       href="#"
-                      class="nav-link p-2 mb-4 sidebar-link"
+                      class="nav-link text-#657D24 p-2 mb-4 sidebar-link"
                     >
                       Todo
                     </a>
@@ -58,10 +58,10 @@
                     <a href="#" class="nav-link p-2 mb-4 sidebar-link">
                       채팅
                     </a>
-                    <a href="#" class="nav-link p-2 mb-4 current" id="current">
+                    <a href="#" class="nav-link p-2 mb-4 sidebar-link">
                       저장소
                     </a>
-                    <a href="#" class="nav-link p-2 mb-4 sidebar-link">
+                    <a href="#" class="nav-link p-2 mb-4 current" id="current">
                       벌금
                     </a>
                     <a href="#" class="nav-link p-2 mb-4 sidebar-link">
@@ -75,15 +75,36 @@
             <div class="col-10 ml-auto py-2 content">
               <div>
                 <!-- 각자 코드 -->
-                <header>저장소</header>
-                <div id="contents"></div>
+                <header>벌금 기록</header>
+                <div id="contents">
+                    <form id="form_data">
+                        <div id="input_list">
+                          <div class="input_item">
+                            <label for="name">이름</label>
+                            <input type="text" placeholder="예시) 홍길동" id="input_id" name="groupName" />
+                          </div>
+                          <div class="input_item">
+                            <label for="description">날짜</label>
+                            <input type="text" placeholder="예시) 8월11일" id="input_date" name="groupName" />
+                          </div>
+                          <div class="input_item">
+                            <label for="color">금액</label>
+                            <input type="text" placeholder="예시) 1000" id="input_amount" name="groupName" />
+                          </div>
+                        </div>
+                      </form>
+                      <div id="two_button">
+                        <button type="button" id="close" onclick="location.href='/penalty'">닫기</button>
+                        <button type="submit" id="add" onclick="location.href='/penalty'">벌금 추가하기</button>
+                      </div>
+                </div>
               </div>
             </div>
           </div>
         </div>
       </div>
     </nav>
-    <script type="text/javascript" src="js/storage.js"></script>
+    <script type="text/javascript" src="js/add_penalty.js"></script>
     <script type="text/javascript" src="js/sidebar.js"></script>
   </body>
 </html>

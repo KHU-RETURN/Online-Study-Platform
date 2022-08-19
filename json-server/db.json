@@ -1,80 +1,130 @@
 {
-  "groups": [
-    {
-      "id": "5",
-      "name": "g Lindsey",
-      "color": "#EFEFEF",
-      "description": "간단한 설명",
-      "code": "62e8e8bc2df249bf0aaa4c2f",
-      "conference": [
-        {
-          "title": "회의제목1",
-          "date": "8월6일"
-        },
-        {
-          "title": "회의제목1-2",
-          "date": "8월6일"
-        },
-        {
-          "title": "회의제목2",
-          "date": "8월7일"
-        },
-        {
-          "title": "회의제목3",
-          "date": "8월8일"
-        },
-        {
-          "title": "회의제목3",
-          "date": "8월9일"
-        },
-        {
-          "title": "회의제목3",
-          "date": "8월10일"
-        },
-        {
-          "title": "회의제목3",
-          "date": "8월11일"
-        },
-        {
-          "title": "회의제목3",
-          "date": "8월12일"
-        },
-        {
-          "title": "회의제목3",
-          "date": "8월13일"
+    "users": [
+      {
+        "id": 1,
+        "user_name": "정주희",
+        "profile_image": "images/default.png",
+        "groups": [
+          {
+            "id": "gLindsey",
+            "group_name": "g Lindsey",
+            "owner": "정주희"
+          },
+          {
+            "id": "gdfdfd",
+            "group_name": "g dldd",
+            "owner": "people"
+          },
+          {
+            "id": "hhh",
+            "group_name": "group11",
+            "owner": "정주희"
+          }
+        ]
+      }
+    ],
+    "groups": [
+      {
+        "id": "5",
+        "name": "g Lindsey",
+        "color": "#EFEFEF",
+        "description": "간단한 설명",
+        "code": "62e8e8bc2df249bf0aaa4c2f",
+        "conference": [
+          {
+            "title": "회의제목1",
+            "date": "8월6일"
+          },
+          {
+            "title": "회의제목1-2",
+            "date": "8월6일"
+          },
+          {
+            "title": "회의제목2",
+            "date": "8월7일"
+          },
+          {
+            "title": "회의제목3",
+            "date": "8월8일"
+          },
+          {
+            "title": "회의제목3",
+            "date": "8월9일"
+          },
+          {
+            "title": "회의제목3",
+            "date": "8월10일"
+          },
+          {
+            "title": "회의제목3",
+            "date": "8월11일"
+          },
+          {
+            "title": "회의제목3",
+            "date": "8월12일"
+          },
+          {
+            "title": "회의제목3",
+            "date": "8월13일"
+          }
+        ],
+        "fine":[{
+          "date":"8월11일",
+          "id":"정주희",
+          "amount":4000
+        },{
+          "date":"8월15일",
+          "id":"people",
+          "amount":1000
+        },{
+          "date":"8월15일",
+          "id":"정주희",
+          "amount":1000
         }
-      ]
-    },
-    {
-      "name": "ㅎㅎ",
-      "description": "ㅎㅎ",
-      "color": "#607f0b",
-      "id": "CWa_U8W",
-      "code": "62e8e8bc7b0b98af2f7d2222"
-    },
-    {
-      "name": "안녕",
-      "description": "하세요",
-      "color": "#ddeeaf",
-      "id": "iXTeibe"
-    },
-    {
-      "name": "ㅇㅇ",
-      "description": "ㅇㅇ",
-      "color": "#ddeeaf",
-      "id": "AwEyMwV"
-    },
-    {
-      "name": "ㅇㅇ2",
-      "description": "ㅇㅇ2",
-      "color": "#ddeeaf",
-      "id": "k15qy4c"
-    },
-    {
-      "name": "ㅇㅇ",
-      "description": "ㅇㅇ",
-      "color": "#ddeeaf",
-      "id": "ln3Youk"
-    }
-  ]
-}
+  
+        ],
+        "todo":[
+            {
+                "text":"프로젝트 완성",
+                "checked":false
+            },
+            {
+                "text":"잠자기",
+                "checked":true
+            }
+        ]
+        
+      },
+      {
+        "name": "ㅎㅎ",
+        "description": "ㅎㅎ",
+        "color": "#607f0b",
+        "id": "CWa_U8W",
+        "code": "62e8e8bc7b0b98af2f7d2222"
+      },
+      {
+        "name": "안녕",
+        "description": "하세요",
+        "color": "#ddeeaf",
+        "id": "iXTeibe"
+      },
+      {
+        "name": "ㅇㅇ",
+        "description": "ㅇㅇ",
+        "color": "#ddeeaf",
+        "id": "AwEyMwV"
+      },
+      {
+        "name": "ㅇㅇ2",
+        "description": "ㅇㅇ2",
+        "color": "#ddeeaf",
+        "id": "k15qy4c"
+      },
+      {
+        "name": "ㅇㅇ",
+        "description": "ㅇㅇ",
+        "color": "#ddeeaf",
+        "id": "ln3Youk"
+      }
+    ]
+  }
