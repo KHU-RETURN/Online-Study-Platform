@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <link rel="stylesheet" href="css/sidebar.css" />
-  <link rel="stylesheet" href="css/chat.css" />
+  <link rel="stylesheet" href="css/penalty.css" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700&display=swap"
@@ -46,13 +46,13 @@
                   <a href="#" class="nav-link p-2 mb-4 sidebar-link" data-value="schedule">
                     일정
                   </a>
-                  <a href="#" class="nav-link p-2 mb-4 current" id="current" data-value="chat">
+                  <a href="#" class="nav-link p-2 mb-4 sidebar-link" data-value="chat">
                     채팅
                   </a>
                   <a href="#" class="nav-link p-2 mb-4 sidebar-link" data-value="storage">
                     저장소
                   </a>
-                  <a href="#" class="nav-link p-2 mb-4 sidebar-link" data-value="penalty">
+                  <a href="#" class="nav-link p-2 mb-4 current" id="current" data-value="penalty">
                     벌금
                   </a>
                   <a href="#" class="nav-link p-2 mb-4 sidebar-link" data-value="goal">
@@ -66,18 +66,34 @@
           <div class="col-10 ml-auto py-2 content">
             <div>
               <!-- 각자 코드 -->
-              <header>채팅</header>
-              <div id="contents">
-                <div id="record">
+              <div id="header">누적 금액 - 0원</div>
+              <div id="contents"></div>
+              <input type="button" id="plus" value="+"></button>
 
-                </div>
-                <div id="chat">
-                  <div id="messages">
-                  </div>
-                  <form id="chatSend">
-                    <input id="message" placeholder="Your Message Here" autocomplete="off"></input>
-                    <button id="send" type="submit">Send</button>
+              <div id="modal">
+                <div id="modal-content">
+                  <div id="headerModal">벌금 기록</div>
+                  <form id="form_data">
+                    <div id="input_list">
+                      <div class="input_item">
+                        <label for="name">이름</label>
+                        <select id="input_name" name="groupName"></select>
+                        <img id="circle">
+                      </div>
+                      <div class="input_item">
+                        <label for="description">날짜</label>
+                        <input type="date" id="input_date" name="groupName" />
+                      </div>
+                      <div class="input_item">
+                        <label for="color">금액</label>
+                        <input type="text" placeholder="예시) 1000" id="input_amount" name="groupName" autocomplete="off" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*?)\..*/g, '$1').replace(/^0[^.]/, '0');" />
+                      </div>
+                    </div>
                   </form>
+                  <div id="two_button">
+                    <button type="button" id="close">닫기</button>
+                    <button type="submit" id="add">벌금 추가하기</button>
+                  </div>
                 </div>
               </div>
             </div>
@@ -85,12 +101,12 @@
         </div>
       </div>
     </div>
+    </div>
   </nav>
-  <script src="/socket.io/socket.io.js"></script>
   <script type="text/javascript">const groupId = '<%-groupId%>';const userId = '<%-user.id%>';</script>
   <script type="text/javascript" src="js/sidebar.js"></script>
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-  <script  src="js/chat.js"></script>
+  <script type="text/javascript" src="js/penalty.js"></script>
+  <script type="text/javascript" src="js/add_penalty.js"></script>
 </body>
 
 </html>

@@ -72,7 +72,9 @@ header {
 }
 
 #messages {
-    height: 90%;
+    width: 100%;
+    display:flex;
+    flex-direction: column;
     /* 구식 브라우저를 위한 대비책(fallback) */
     height: -webkit-calc(100% - 50px);
     /* for Chrome, Safari */
@@ -81,12 +83,19 @@ header {
     height: calc(100% - 50px);
     /* for IE */
     overflow: scroll;
+    background: #ffffff;
 }
 
 #chatSend {
     height: 50px;
     display: flex;
     justify-content: center;
+}
+
+.chat_message {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
 }
 
 #message {
@@ -101,8 +110,31 @@ header {
 }
 
 #circle{
-    width: 25px;
-    height: 25px;
-    background-color: #FFFFFF;
+    width: 40px;
+    height: 40px;
     border-radius: 50%;
+    margin-right: 5px;
 }
+
+.chat_left {
+    margin: 20px;
+    align-self: flex-start;
+  }
+  .chat_left > .message {
+    padding: 10px;
+    margin: 5px;
+    border-radius: 10px;
+    background-color: var(--dark-gray);
+  }
+  
+  .chat_right {
+    margin: 20px;
+    align-self: flex-end;
+  }
+  
+  .chat_right > .message {
+    padding: 10px;
+    margin: 5px;
+    border-radius: 10px;
+    background-color: var(--main-color);
+  }

@@ -7,7 +7,7 @@ function init() {
     .then((response) => response.json())
     .then((data) => {
       data_list = data.conference;
-      console.log(data_list);
+      // console.log(data_list);
       // 날짜 데이터 형식? 시간 순?
       // 정렬된 데이터 -> 수정 필요 x
       // 날짜순으로 정렬되지 않은 데이터 -> 정렬하는 과정 필요
@@ -17,14 +17,14 @@ function init() {
       }
       var item = document.createElement("div");
       item.setAttribute("class", "item");
-      let date = data_list[0].date;
+      let date = data_list[0].endTime;
       var dateFormat = new Date(date);
       dateFormat = (dateFormat.getMonth()+1) + "월 " + dateFormat.getDate() + "일";
       item.innerHTML += `<div class="date" id=${date}>${dateFormat}</div>`;
 
       data_list.forEach((element) => {
         const prevDateFormat = dateFormat;
-        date = element.date;
+        date = element.endTime;
         dateFormat = new Date(date);
         dateFormat = dateFormat.getMonth() + 1 + "월 " + dateFormat.getDate() + "일";
         if (prevDateFormat !== dateFormat) {
@@ -56,8 +56,8 @@ function loadDetail(event) {
   //encodeURI(encodeURIComponent(selected_date));
   //encodeURI(encodeURIComponent(selected_title));
 
-  console.log(selected_date);
-  console.log(selected_title);
+  // console.log(selected_date);
+  // console.log(selected_title);
   location.href = `/storage_detail?id=`+confId; //경로 수정
   // date, title 정보 전달 -> detail page로
 }

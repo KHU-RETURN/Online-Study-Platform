@@ -69,7 +69,7 @@ router.get("/todo", async function (req, res, next) {
     else {
         var dbUser = await userModel.findOne({ id: req.session.user.id });
         req.session.user = dbUser;
-        res.render("todo/index.html", { user: req.session.user });
+        res.render("todo_list/index.html", { user: req.session.user });
     }
 });
 
@@ -109,12 +109,12 @@ router.get("/storage_detail", async function (req, res, next) {
     }
 });
 
-router.get("/fine", async function (req, res, next) {
+router.get("/penalty", async function (req, res, next) {
     if (!req.session.user) res.render("before_login/index.html");
     else {
         var dbUser = await userModel.findOne({ id: req.session.user.id });
         req.session.user = dbUser;
-        res.render("fine/index.html", { user: req.session.user });
+        res.render("penalty/index.html", { user: req.session.user });
     }
 });
 
