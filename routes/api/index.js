@@ -242,4 +242,15 @@ router.put('/edit_todo', async function (req, res) { // 벌금 목록 가져오�
   res.send("finish");
 });
 
+router.get('/get_goal', async function (req, res) { //목표 조회
+  var result = {};
+
+  const groupId = req.session.groupId;
+  var currGroup = await groupModel.findById(groupId);
+
+  result.goal = currGroup.todo;
+
+  res.send(result);
+})
+
 module.exports = router;
