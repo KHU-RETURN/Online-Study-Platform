@@ -254,12 +254,12 @@ router.post('/edit_goal', async function (req, res) { //목표 추가
   const groupId = req.session.groupId;
   var currGroup = await groupModel.findById(groupId);
   for(var i = 0; i < currGroup.todo.length; i++) {
-    if(currGroup.todo[i]."~" == req."~") {
-      currGroup.todo[i]."~".push(req.body);
+    if(currGroup.todo[i]._id == req.session.code) {
+      currGroup.todo[i]._id.push(req.body);
     }
   }
   currGroup = await groupModel.findByIdAndUpdate(groupId, currGroup, {new: true});
-  var result = currGroup.groupMember.find((item)=> {return item.id === req.session.user.id});
+  var result = currGroup.todo.find((item)=> {return item.id === req.session.code});
   res.send(result.todo[result.todo.length-1]);
   res.send("finish");
 })
@@ -268,14 +268,13 @@ router.put('/edit_goal', async function (req, res) { //목표 수정
   const groupId = req.session.groupId;
   var currGroup = await groupModel.findById(groupId);
   for(var i = 0; i < currGroup.todo.length; i++) {
-    if(currGroup.todo[i]."~" == req."~") {
-      currGroup.todo[i]."~" == req.body;
+    if(currGroup.todo[i]._id == req.session.code) {
+      currGroup.todo[i]._id == req.body;
     }
   }
   await groupModel.findByIdAndUpdate(groupId, currGroup);
   res.send("finish");
 })
-
 
 
 module.exports = router;
