@@ -244,13 +244,38 @@ router.put('/edit_todo', async function (req, res) { // 벌금 목록 가져오�
 
 router.get('/get_goal', async function (req, res) { //목표 조회
   var result = {};
-
   const groupId = req.session.groupId;
   var currGroup = await groupModel.findById(groupId);
-
   result.goal = currGroup.todo;
-
   res.send(result);
 })
+
+router.post('/edit_goal', async function (req, res) { //목표 추가
+  const groupId = req.session.groupId;
+  var currGroup = await groupModel.findById(groupId);
+  for(var i = 0; i < currGroup.todo.length; i++) {
+    if(currGroup.todo[i]."~" == req."~") {
+      currGroup.todo[i]."~".push(req.body);
+    }
+  }
+  currGroup = await groupModel.findByIdAndUpdate(groupId, currGroup, {new: true});
+  var result = currGroup.groupMember.find((item)=> {return item.id === req.session.user.id});
+  res.send(result.todo[result.todo.length-1]);
+  res.send("finish");
+})
+
+router.put('/edit_goal', async function (req, res) { //목표 수정
+  const groupId = req.session.groupId;
+  var currGroup = await groupModel.findById(groupId);
+  for(var i = 0; i < currGroup.todo.length; i++) {
+    if(currGroup.todo[i]."~" == req."~") {
+      currGroup.todo[i]."~" == req.body;
+    }
+  }
+  await groupModel.findByIdAndUpdate(groupId, currGroup);
+  res.send("finish");
+})
+
+
 
 module.exports = router;
