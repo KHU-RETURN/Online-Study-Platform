@@ -55,6 +55,7 @@ router.get('/group/:id', async function (req, res) {
   result.color = group.color;
   result.groupMember = group.groupMember;
   result.conference = group.conference;
+  result.todo = group.todo;
 
   res.send(result);
 });
@@ -100,9 +101,9 @@ router.post('/join_group', async function (req, res) {
 router.delete('/exit_group/:code', async function (req, res) {
   var user = await userModel.findOne({ id: req.session.user.id });
   var group = await groupModel.findById(req.params.code);
-  group.groupMember.pop(group.groupMember.findIndex((item)=> { return (item.id == req.params.code) }));
+  group.groupMember.splice(group.groupMember.findIndex((item)=> { return (item.id == req.session.user.id) }), 1);
   await groupModel.findByIdAndUpdate(req.params.code, group);
-  user.groups.pop(user.groups.find((item)=> { return (item.id == req.params.code) }));
+  user.groups.splice(user.groups.findIndex((item)=> { return (item.id == req.params.code) }), 1);
   await userModel.findOneAndUpdate({id: user.id}, user);
   res.send("finish");
 });
@@ -131,12 +132,15 @@ router.get('/modify_group/:code', async function (req, res) {
 
 router.delete('/delete_group/:code', async function (req, res) {
   var group = await groupModel.findById(req.params.code);
-  group.groupMember.forEach(async (element) => {
-    var user = await userModel.findOne({ id: element.id });
-    user.groups.splice(user.groups.findIndex((item) => { return (item.id == req.params.code) }), 1);
-    await userModel.findOneAndUpdate({ id: req.session.user.id }, user);
-  })
+  for(var i = 0; i < group.groupMember.length; i++){
+    var user = await userModel.findOne({ id: group.groupMember[i].id });
+    if(user.groups.findIndex((item) => { return (item.id == req.params.code) }) != -1){
+      user.groups.splice(user.groups.findIndex((item) => { return (item.id == req.params.code) }), 1);
+      await userModel.findOneAndUpdate({ id: req.session.user.id }, user);
+    }
+  }
   await groupModel.findByIdAndDelete(req.params.code);
+  res.send("finished");
 });
 
 router.get('/get_chat', async function (req, res) {
@@ -169,9 +173,18 @@ router.put('/edit_conference/:confId', async function (req, res) {
   const confId = req.params.confId;
   for(var i = 0; i <currGroup.conference.length; i++) {
     if(currGroup.conference[i]._id == confId){
+      currGroup.conference[i].title = req.body.title;
       currGroup.conference[i].record = req.body.record.ops;
     }
   }
+  await groupModel.findByIdAndUpdate(groupId, currGroup);
+  res.send("finished");
+});
+
+router.post('/add_conference', async function (req, res) {
+  const groupId = req.session.groupId;
+  var currGroup = await groupModel.findById(groupId);
+  currGroup.conference.push(req.body);
   await groupModel.findByIdAndUpdate(groupId, currGroup);
   res.send("finished");
 });
@@ -201,7 +214,7 @@ router.post('/add_penalty', async function (req, res) { // 벌금 추가
   res.send("finish");
 });
 
-router.get('/get_todo', async function (req, res) { // 벌금 목록 가져오기
+router.get('/get_todo', async function (req, res) {
   var userId = [{id: req.session.user.id}];
   const groupId = req.session.groupId;
   var currGroup = await groupModel.findById(groupId);
@@ -217,7 +230,7 @@ router.get('/get_todo', async function (req, res) { // 벌금 목록 가져오�
   res.send(groupMember);
 });
 
-router.post('/add_todo', async function (req, res) { // 벌금 목록 가져오기
+router.post('/add_todo', async function (req, res) {
   const groupId = req.session.groupId;
   var currGroup = await groupModel.findById(groupId);
   for(var i = 0; i < currGroup.groupMember.length; i++) {
@@ -230,7 +243,7 @@ router.post('/add_todo', async function (req, res) { // 벌금 목록 가져오�
   res.send(result.todo[result.todo.length-1]);
 });
 
-router.put('/edit_todo', async function (req, res) { // 벌금 목록 가져오기
+router.put('/edit_todo', async function (req, res) {
   const groupId = req.session.groupId;
   var currGroup = await groupModel.findById(groupId);
   for(var i = 0; i < currGroup.groupMember.length; i++) {
@@ -242,27 +255,12 @@ router.put('/edit_todo', async function (req, res) { // 벌금 목록 가져오�
   res.send("finish");
 });
 
-router.get('/get_goal', async function (req, res) { //목표 조회
-  var result = {};
+router.put('/edit_goal', async function (req, res) {
   const groupId = req.session.groupId;
   var currGroup = await groupModel.findById(groupId);
-  result.goal = currGroup.todo;
-  res.send(result);
-})
-
-router.post('/edit_goal', async function (req, res) { //목표 수정
-  const groupId = req.session.groupId;
-  var currGroup = await groupModel.findById(groupId);
-  for(var i = 0; i < currGroup.todo.length; i++) {
-    if(currGroup.todo[i]._id == req.session.code) {
-      currGroup.todo[i] == req.body;
-    }
-  }
-  currGroup = await groupModel.findByIdAndUpdate(groupId, currGroup, {new: true});
-  var result = currGroup.todo.find((item)=> {return item.id === req.session.code});
-  res.send(result.todo[result.todo.length-1]);
+  currGroup.todo = req.body;
+  await groupModel.findByIdAndUpdate(groupId, currGroup);
   res.send("finish");
-})
-
+});
 
 module.exports = router;

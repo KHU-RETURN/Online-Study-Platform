@@ -103,7 +103,7 @@ function modifyGroup() {
 }
 
 function deleteGroup() {
-  var con_test = confirm(original_value.name + " 그룹을 삭제하시겠습니까?");
+  var con_test = confirm(original_value.groupName + " 그룹을 삭제하시겠습니까?");
   if (con_test == true) {
     fetch("/api/delete_group/" + original_value.id, {
       method: "DELETE",

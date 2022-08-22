@@ -83,7 +83,16 @@
                     <div id="info">
                       <div class="left_info">
                         <span id="date">0000년 00월 00일</span>
-                        <span id="title">회의 제목</span>
+                        <span id="title" class="title_info">
+                          <input
+                            type="text"
+                            id="meeting_title"
+                            class="meeting_title"
+                            name="meeting_title"
+                            value="Untitled"
+                            autocomplete="off"
+                          />
+                        </span>
                       </div>
                       <button
                         type="button"
@@ -103,6 +112,7 @@
         </div>
       </div>
     </nav>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <script src="https://cdn.quilljs.com/1.3.6/quill.js"></script>
     <script type="text/javascript">const groupId = '<%-groupId%>';</script>
     <script type="text/javascript" src="js/storage_detail.js"></script>

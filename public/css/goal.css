@@ -1,0 +1,189 @@
+:root {
+    --font-xs: 12px;
+    --font-sm: 14px;
+    --font-base: 16px;
+    --font-lg: 18px;
+    --font-xl: 20px;
+    --dark-gray: #efefef;
+    --light-gray: #f9f9f9;
+    --main-color: #ddeeaf;
+    --point-color: #677e25;
+}
+body {
+    font-size: 14px;
+    margin: 0;
+    flex-direction: column;
+    display: flex;
+  }
+header{
+    margin: 50px 0 46px 46px;
+    font-size: 28px;
+    font-weight: 700;
+    color: var(--point-color);
+}
+.grid-container{
+    display: grid;
+    grid-template-columns: 50% 50%;
+    align-items: stretch;
+    column-gap: 30px;
+    height: 70vh;
+    padding-left: 55px;
+}
+#my-todo{
+    padding-left:20%;
+    padding-right:20%;
+}
+
+
+/*todo list*/
+/*입력창*/
+#button-addon2{
+    background-color: #657D24;
+    color: white;
+}
+#todo-title{
+    margin-bottom: 15px;
+    text-align: center;
+}
+#my-goal{
+    margin-right: 40px;
+    font-weight: 700;
+    font-size: 1.3rem;
+}
+
+#todo-entry{
+    margin-bottom: 30px;
+}
+
+/*리스트창*/
+#check-list{
+    align-items: center;
+    margin-top: 20px;
+    height: 90vh; /* 구식 브라우저를 위한 대비책(fallback) */
+    height: -webkit-calc(100vh - 450px); /* for Chrome, Safari */
+    height: -moz-calc(100vh - 450px); /* for Firefox */
+    height: calc(100vh - 450px); /* for IE */
+    overflow: scroll;
+}
+
+#check-list .input-group .form-control{
+    clear: both;
+    overflow: hidden;
+    width: 100px;
+    height: 40px;
+    background: #F9F9F9;
+    box-shadow: 1.88235px 1.88235px 5px rgba(0, 0, 0, 0.25);
+    border-radius: 9px;
+}
+#check{
+    padding: 0;
+    margin-right: 10px;
+    font-size: 2rem;
+}
+#del {
+    padding: 0;
+    font-size: 22px;
+    position: absolute;
+    right: 7px;
+    top: 9px;
+    background-color: inherit;
+    color: #D4D4D4;
+}
+#task{
+    position:absolute;
+    font-size: 1rem;
+    bottom: 7px;
+}
+[value = "true"]{
+    color: #677e25;
+}
+[value = "true"] + .form-control{
+    color: #7D7D7D;
+}
+
+[value = "false"]{
+    color: #D4D4D4;
+}
+[value = "false"] + .form-control{
+    color: #000;
+}
+/*멤버별 투두리스트*/
+#dropbox{
+    height: 45px;
+    width: 33vw;
+    margin: 0 46px 0 0;
+    padding: 0 10px 0 10px;
+    background: #FFFFFF;
+    color: #000;
+    border: none;
+    box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 9px;
+    text-align: left;
+}
+.dropdown-menu.text-muted{
+    padding: 0;
+    width: 33vw;
+}
+#check-list.member-list .input-group{
+    padding-right: 10px;
+}
+
+#goal_graph{
+    width:68%;
+    position:absolute;
+    bottom:5%;
+    left:25%;
+    border-radius:9px;
+    border: 1px solid #D3D3D3;
+}
+.item{
+    display:flex;
+    padding-left:10%;
+    padding-right:10%;
+    margin: auto;
+    margin-bottom:3px;
+    margin-top:2px;
+    height:25px;
+}
+.name{
+    display:block;
+    width:150px;
+    float:left;
+}
+#rate{
+    margin-top:6px;
+    font-size:10px;
+    height:12px;
+    display:flex;
+    background-color:#657D24;
+    color:#657D24;
+    border-top-right-radius: 5px;
+    border-bottom-right-radius:5px;
+}
+#rate0{margin-top:6px;
+    font-size:10px;
+    height:12px;
+    display:flex;
+    background-color:#ddeeaf;
+    color:#ddeeaf;
+    border-top-right-radius: 5px;
+    border-bottom-right-radius:5px;
+}
+#rate1{margin-top:6px;
+    font-size:10px;
+    height:12px;
+    display:flex;
+    background-color:#D3D3D3;
+    color:#D3D3D3;
+    border-top-right-radius: 5px;
+    border-bottom-right-radius:5px;
+}
+#rate2{margin-top:6px;
+    font-size:10px;
+    height:12px;
+    display:flex;
+    background-color:#dfdfdf;
+    color:#dfdfdf;
+    border-top-right-radius: 5px;
+    border-bottom-right-radius:5px;
+}

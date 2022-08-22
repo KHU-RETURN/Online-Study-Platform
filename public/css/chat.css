@@ -8,22 +8,22 @@
     --light-gray: #f9f9f9;
     --main-color: #ddeeaf;
     --point-color: #677e25;
-}
-
-html,
-body {
+  }
+  
+  html,
+  body {
     font-family: "Noto Sans KR", sans-serif;
     margin: 0;
-}
-
-header {
+  }
+  
+  header {
     color: var(--point-color);
     font-size: 28px;
     font-weight: 700;
-    margin: 60px 0px 46px 46px;
-}
-
-#title_button {
+    margin: 30px 0px 30px 46px;
+  }
+  
+  #title_button {
     font-family: "Noto Sans KR", sans-serif;
     font-size: var(--font-sm);
     font-weight: 300;
@@ -31,93 +31,109 @@ header {
     /*box-shadow: 0px 0px 2px rgba(0, 0, 0, 0.25);*/
     border-radius: 20px;
     border: none;
-
+  
     padding: 17px 35px;
     margin: 19px 18px 43px 0px;
-
+  
     -webkit-appearance: none;
     -moz-appearance: none;
     appearance: none;
-}
-
-#contents {
-    margin: 0px 68px;
-    height: 90vh;
-    /* 구식 브라우저를 위한 대비책(fallback) */
-    height: -webkit-calc(100vh - 180px);
-    /* for Chrome, Safari */
-    height: -moz-calc(100vh - 180px);
-    /* for Firefox */
-    height: calc(100vh - 180px);
-    /* for IE */
-    -moz-column-count: 2;
-    -webkit-column-count: 2;
-    column-count: 2;
-}
-
-.date {
+  }
+  
+  #contents {
+    margin: 0px 0px 0px 60px;
+    align-items: center;
+  }
+  
+  .date {
     font-weight: 400;
     font-size: var(--font-sm);
-}
-
-#record {
+  }
+  
+  #chat {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    height: 80vh;
+    padding: 15px;
+    border-radius: 12px;
+    background-color: var(--light-gray);
+  }
+  
+  #messages {
     width: 100%;
-    height: 100%;
-}
-
-#chat {
-    width: 100%;
-    height: 100%;
-    background-color: #f9f9f9;
-}
-
-#messages {
-    width: 100%;
-    display:flex;
+    display: flex;
     flex-direction: column;
     /* 구식 브라우저를 위한 대비책(fallback) */
-    height: -webkit-calc(100% - 50px);
+    height: -webkit-calc(90% - 50px);
     /* for Chrome, Safari */
-    height: -moz-calc(100% - 50px);
+    height: -moz-calc(90% - 50px);
     /* for Firefox */
-    height: calc(100% - 50px);
+    height: calc(90% - 50px);
     /* for IE */
-    overflow: scroll;
-    background: #ffffff;
-}
-
-#chatSend {
-    height: 50px;
+    overflow-y: scroll;
+    font-size: var(--font-sm);
+  }
+  
+  #messages::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+  }
+  
+  #messages::-webkit-scrollbar-thumb {
+    background-color: #b0b0b0;
+    border-radius: 10px;
+    background-clip: padding-box;
+    border: 2px solid transparent;
+  }
+  
+  #messages::-webkit-scrollbar-track {
+    background-color: var(--light-gray);
+    border-radius: 10px;
+    box-shadow: inset 0px 0px 3px white;
+  }
+  
+  #chatSend {
+    height: 10%;
+    margin: 10px;
     display: flex;
     justify-content: center;
-}
-
-.chat_message {
+  }
+  
+  .chat_message {
     width: 100%;
     display: flex;
     flex-direction: column;
-}
-
-#message {
+  }
+  
+  #message {
     padding-left: 10px;
     line-height: 50px;
     width: 90%;
     resize: none;
-}
-
-#send {
-    width: 10%;
-}
-
-#circle{
+    border: none;
+    border-radius: 12px 0px 0px 12px;
+  }
+  
+  #message:focus {
+    outline: none;
+  }
+  #send {
+    width: 20%;
+    border: none;
+    border-radius: 0px 12px 12px 0px;
+    background-color: white;
+  }
+  
+  #circle {
     width: 40px;
     height: 40px;
     border-radius: 50%;
     margin-right: 5px;
-}
-
-.chat_left {
-    margin: 20px;
+  }
+  
+  .chat_left {
+    margin: 10px;
     align-self: flex-start;
   }
   .chat_left > .message {
@@ -128,7 +144,7 @@ header {
   }
   
   .chat_right {
-    margin: 20px;
+    margin: 10px;
     align-self: flex-end;
   }
   
@@ -138,3 +154,54 @@ header {
     border-radius: 10px;
     background-color: var(--main-color);
   }
+  
+  #start_button,
+  #save_button {
+    background-color: var(--point-color);
+    color: white;
+    font-size: var(--font-base);
+    margin-left: 5px;
+  }
+  
+  #info {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+  }
+  
+  .meeting_title {
+    border: none;
+    background-color: var(--light-gray);
+    padding-left: 10px;
+    font-family: "Noto Sans KR", sans-serif;
+    font-size: var(--font-sm);
+  }
+  
+  .meeting_title:focus {
+    outline: none;
+  }
+  
+  .title_info {
+    background-color: var(--light-gray);
+    border-radius: 12px;
+    padding: 10px;
+  }
+  
+  .ql-container.ql-snow {
+    height: 65vh;
+  }
+  
+  #meeting {
+    padding-left: 0px;
+    padding-right: 20px;
+  }
+  
+  #send_icon {
+    background-color: white;
+    padding: 0px;
+    vertical-align: middle;
+    transform: rotate(-30deg);
+    font-size: 26px;
+  }
+  
