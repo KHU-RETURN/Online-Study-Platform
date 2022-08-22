@@ -10,26 +10,27 @@
     --point-color: #677e25;
 }
 
-header{
-    margin: 50px 0 46px 46px;
+header {
+    color: var(--point-color);
     font-size: 28px;
     font-weight: 700;
-    color: var(--point-color);
+    margin: 30px 0px 30px 46px;
 }
+
 .grid-container{
     display: grid;
     grid-template-columns: 50% 50%;
     align-items: stretch;
     column-gap: 30px;
     height: 70vh;
-    padding-left: 55px;
-}
-#my-todo{
-    border-right: solid var(--light-gray);
+    padding-left: 46px;
+    padding-right: 46px;
+    width: 100%;
 }
 /*날짜 선택칸*/
 #datebox{
     height: 45px;
+    width: 90%;
     margin: 0 46px 46px 46px;
     padding: 0 10px 0 10px;
     background: #FFFFFF;
@@ -188,9 +189,17 @@ header{
 }
 #todo-entry{
     margin-bottom: 30px;
+    width: 100%;
 }
 
 /*리스트창*/
+#my-todo{
+    border-right: solid var(--light-gray);
+    overflow-y: scroll;
+}
+#my-todo::-webkit-scrollbar{
+    display:none;
+}
 #check-list{
     align-items: center;
     margin-top: 20px;
@@ -202,7 +211,7 @@ header{
     width: 100px;
     height: 40px;
     background: #F9F9F9;
-    box-shadow: 1.88235px 1.88235px 5px rgba(0, 0, 0, 0.25);
+    box-shadow: 1.5px 1.5px 3px rgba(0, 0, 0, 0.15);
     border-radius: 9px;
 }
 #check{
@@ -240,8 +249,9 @@ header{
 /*멤버별 투두리스트*/
 #dropbox{
     height: 45px;
+    min-width:max-content;
     width: 33vw;
-    margin: 0 46px 0 0;
+    margin: 5px 46px 0 3px;
     padding: 0 10px 0 10px;
     background: #FFFFFF;
     color: #000;
@@ -250,10 +260,19 @@ header{
     border-radius: 9px;
     text-align: left;
 }
+div.dropdown.mb-4{
+    margin-right: 0px;
+}
 .dropdown-menu.text-muted{
     padding: 0;
     width: 33vw;
 }
 #check-list.member-list .input-group{
     padding-right: 10px;
+}
+#mb-todo{
+    overflow-y: scroll;
+}
+#mb-todo::-webkit-scrollbar{
+    display:none;
 }
