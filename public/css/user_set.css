@@ -11,11 +11,12 @@
 }
 
 
-body {
-  font-size: 14px;
+html, body {
+  font-family: "Noto Sans KR", sans-serif;
   margin: 0;
-  flex-direction: column;
   display: flex;
+  flex-direction: column;
+  background-color: var(--light-gray);
 }
 main {
   display: flex;
@@ -111,6 +112,7 @@ input[type="file"] {
   width: 100%;
   height: 300px;
   float: left;
+  padding-left:3%;
 }
 #change{
   width: 152px;
@@ -157,6 +159,7 @@ input[type="file"] {
 }
 .names {
   width: 100%;
+  padding-left:5%;
   color: rgba(0, 0, 0, 1);
   position: relative;
   font-family: Noto Sans KR;
@@ -166,7 +169,7 @@ input[type="file"] {
   float: left;
 }
 #name1 {
-  width: 200px;
+  width: 150px;
   color: rgba(0, 0, 0, 1);
   position: relative;
   font-family: Noto Sans KR;
@@ -177,7 +180,7 @@ input[type="file"] {
   float: left;
 }
 #name {
-  width: 100px;
+  width: 200px;
   color: rgba(0, 0, 0, 1);
   position: relative;
   font-family: Noto Sans KR;
@@ -189,27 +192,30 @@ input[type="file"] {
 }
 #name2{
   width: 150px;
-  color: #677e25;
-
-  position: relative;
+  height:40px;
+  position:absolute;
   font-family: Noto Sans KR;
   font-weight: Regular;
   font-size: 20px;
   opacity: 1;
   text-align: center;
   float: left;
-  left: 150px;
+  left:50%;
+  color: #677e25;
   background-color: #ddeeaf;
   border: 0;
 }
 .group {
   width: 100%;
+  padding-left:5%;
   float: left;
+  color: rgba(0, 0, 0, 1);
+  position: relative;
   height: 5%;
   margin-top: 3%;
 }
 .group1 {
-  width: 200px;
+  width: 150px;
   color: rgba(0, 0, 0, 1);
   position: relative;
   font-family: Noto Sans KR;
@@ -219,9 +225,29 @@ input[type="file"] {
   text-align: center;
   float: left;
 }
+input[type="text"] {
+  border: none;
+  border-radius: 12px;
+  width: 300px;
+  background-color: var(--dark-gray);
+  font-family: "Noto Sans KR", sans-serif;
+  font-size: var(--font-sm);
+  padding: 10px;
+  height:20px;
+}
+select, option{
+  border: none;
+  border-radius: 12px;
+  width: 400px;
+  background-color: var(--dark-gray);
+  font-family: "Noto Sans KR", sans-serif;
+  font-size: var(--font-sm);
+  padding: 10px;
+}
+
 #group_name {
-  width: 200px;
-  
+  width: 400px;
+  height:40px;
   color: rgba(0, 0, 0, 1);
   position: relative;
   font-family: Noto Sans KR;
@@ -234,16 +260,17 @@ input[type="file"] {
 #btn {
   width: 150px;
   color: #677e25;
-  position: relative;
+  position: absolute;
   font-family: Noto Sans KR;
   font-weight: Regular;
   font-size: 20px;
   opacity: 1;
   text-align: center;
   float: left;
-  left: 58px;
+  left:50%;
   background-color: #ddeeaf;
   border: 0;
+  height:40px;
 }
 .s {
   width: 81px;
@@ -267,4 +294,39 @@ input[type="file"] {
 }
 .material-symbols-outlined:hover {
   cursor: pointer;
+}
+button{
+  font-family: "Noto Sans KR", sans-serif;
+    font-size: var(--font-sm);
+    font-weight: 400;
+    background-color: #ffffff;
+    box-shadow: 0px 0px 2px rgb(0 0 0 / 25%);
+    border-radius: 20px;
+    border: none;
+    padding: 13px 60px;
+    margin: 30px 0px;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    appearance: auto;
+    writing-mode: horizontal-tb !important;
+   
+    text-rendering: auto;
+    letter-spacing: normal;
+    word-spacing: normal;
+    line-height: normal;
+    text-transform: none;
+    text-indent: 0px;
+    text-shadow: none;
+    display: inline-block;
+    text-align: center;
+    align-items: flex-start;
+    cursor: default;
+    box-sizing: border-box;
+    margin: 0em;
+    padding: 1px 6px;
+    border-width: 2px;
+    border-style: outset;
+    border-color: buttonborder;
+    border-image: initial;
 }
