@@ -113,9 +113,12 @@ header {
 
 .chat_left {
   margin: 20px;
+  display: flex;
+  flex-direction: row;
   align-self: flex-start;
 }
-.chat_left > .message {
+
+.chat_left>.message {
   padding: 10px;
   margin: 5px;
   border-radius: 10px;
@@ -124,10 +127,12 @@ header {
 
 .chat_right {
   margin: 20px;
+  display: flex;
+  flex-direction: row;
   align-self: flex-end;
 }
 
-.chat_right > .message {
+.chat_right>.message {
   padding: 10px;
   margin: 5px;
   border-radius: 10px;
@@ -147,7 +152,8 @@ header {
 }
 
 .ql-editor::-webkit-scrollbar {
-  display: none; /* Chrome, Safari, Opera*/
+  display: none;
+  /* Chrome, Safari, Opera*/
 }
 
 .meeting_title {

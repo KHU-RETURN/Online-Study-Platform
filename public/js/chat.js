@@ -55,11 +55,11 @@ function chatLoad() {
             response.forEach((element, index) => {
                 if (userId === element.id) {
                     // owner이름과 같으면 이미지 오른쪽에 생성
-                    let chat = `<div class="chat_message"><div class="chat_right"><span class="message">${element.message}</span><span class="photo"><img id="circle" src="data:image/png;base64, ${element.profileImage}"></span></div></div>`;
+                    let chat = `<div class="chat_right"><div class="message">${element.message}</div><div class="photo"><img id="circle" src="data:image/png;base64, ${element.profileImage}"></div></div>`;
                     messages.innerHTML += chat;
                 } else {
                     // 다르면 왼쪽에 생성
-                    let chat = `<div class="chat_message">${element.name}<div class="chat_left"><span class="photo"><img id="circle" src="data:image/png;base64, ${element.profileImage}"></span><span class="message">${element.message}</span></div></div>`;
+                    let chat = `<div class="chat_left"><div class="photo"><img id="circle" src="data:image/png;base64, ${element.profileImage}"></div><div class="message">${element.message}</div></div>`;
                     // 이미지 넣는 코드는 chat.js에서 가져왔움
                     messages.innerHTML += chat;
                 }
@@ -124,7 +124,9 @@ function startMeeting(quill) {
     if (!_startTime) {
         alert("회의를 시작합니다. (채팅도 저장소에서 확인할 수 있습니다.)");
         quill.enable();
-        _startTime = new Date();
+        fetch("/api/get_date").then(response => response.text()).then((response) => {
+            _startTime = new Date(parseInt(response));
+        });
         document.querySelector("#start_button").textContent = "저장하기";
         document.querySelector(".toggle_button").setAttribute("id", "save_button");
         $("#save_button").click(function () {
@@ -135,24 +137,29 @@ function startMeeting(quill) {
 
 function saveMeeting(record_body) {
     var _title = $("#meeting_title").val();
-    var _endTime = new Date(); // 채팅 확인을 위한 회의 종료 시간 기록
+    if (_title === "") {
+        _title = "Untitled";
+    }
+    fetch("/api/get_date").then(response => response.text()).then((response) => {
+        var _endTime = new Date(parseInt(response)); // 채팅 확인을 위한 회의 종료 시간 기록
+        fetch("/api/add_conference", {
+            //api 수정
+            method: "POST",
+            body: JSON.stringify({
+                title: _title,
+                startTime: _startTime,
+                endTime: _endTime,
+                record: record_body.ops,
+            }),
+            headers: {
+                "content-type": "application/json;charset=utf-8",
+            },
+        }).then(() => {
+            _startTime = 0;
+            location.reload();
+        });
+    })
 
-    fetch("/api/add_conference", {
-        //api 수정
-        method: "POST",
-        body: JSON.stringify({
-            title: _title,
-            startTime: _startTime,
-            endTime: _endTime,
-            record: record_body.ops,
-        }),
-        headers: {
-            "content-type": "application/json;charset=utf-8",
-        },
-    }).then(() => {
-        _startTime = 0;
-        location.reload();
-    });
 }
 
 function getParameter(name) {

@@ -12,11 +12,7 @@ const groupSchema = new mongoose.Schema({
             checked: Boolean,
         }]
     }],
-    calendar: [{
-        date: Date,
-        title: String,
-        content: String,
-    }],
+    calendar: [],
     conference: [{
         title: String,
         record: [],

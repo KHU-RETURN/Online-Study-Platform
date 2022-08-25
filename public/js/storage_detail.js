@@ -36,7 +36,7 @@ function init() {
       dateFormat = (dateFormat.getFullYear()) + "년 " + (dateFormat.getMonth() + 1) + "월 " + dateFormat.getDate() + "일";
       document.getElementById("date").innerHTML = dateFormat;
       document.getElementById("meeting_title").value = response.title;
-      
+
       // console.log(JSON.parse(JSON.stringify(response.record)));
       quill.setContents(JSON.parse(JSON.stringify(response.record)));
       document
@@ -63,11 +63,11 @@ function init() {
               // 불러온 데이터 시간순 아니면 -> 정렬하는 부분 추가
               if (userId === element.id) {
                 // owner이름과 같으면 이미지 오른쪽에 생성
-                let chat = `<div class="chat_right"><span class="message">${element.message}</span><span class="photo"><img id="circle" src="data:image/png;base64, ${element.profileImage}"></span></div>`;
+                let chat = `<div class="chat_right"><div class="message">${element.message}</div><div class="photo"><img id="circle" src="data:image/png;base64, ${element.profileImage}"></div></div>`;
                 chatting.innerHTML += chat;
               } else {
                 // 다르면 왼쪽에 생성
-                let chat = `<div class="chat_left"><span class="photo"><img id="circle" src="data:image/png;base64, ${element.profileImage}"></span><span class="message">${element.message}</span></div>`;
+                let chat = `<div class="chat_left"><div class="photo"><img id="circle" src="data:image/png;base64, ${element.profileImage}"></div><div class="message">${element.message}</div></div>`;
                 // 이미지 넣는 코드는 chat.js에서 가져왔움
                 chatting.innerHTML += chat;
               }

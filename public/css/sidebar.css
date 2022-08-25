@@ -8,6 +8,7 @@
 }
 body {
   background-color: #f9f9f9;
+  overflow-x: hidden;
 }
 a,
 a:link,

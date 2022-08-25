@@ -8,7 +8,8 @@ const express = require('express'),
   mongoose = require('mongoose'),
   MongoStore = require('connect-mongo'),
   http = require("http").Server(app),
-  socket = require('socket.io')(http);
+  socket = require('socket.io')(http),
+  fetch = require('node-fetch');
 
 const authRouter = require('./routes/auth');
 const apiRouter = require('./routes/api');
@@ -57,20 +58,28 @@ app.use('/auth', authRouter);
 app.use('/api', apiRouter);
 app.use('/', pageRouter);
 
+app.use('/robots.txt', function (req, res, next) {
+  res.type('text/plain')
+  res.send("User-agent: *\nDisallow: /");
+});
+
 socket.on("connection", socket => {
 
   socket.on("disconnect", function () {
   });
 
   socket.on("chat message", async function (userId, msg, groupId) {
-    var date = new Date();
+    const date = await fetch("http://onlstudies.com/api/get_date");
+    const dateText = await date.text();
+
+    const _date = new Date(parseInt(dateText));
 
     const groupModel = require('./models/groups.js');
     var currGroup = await groupModel.findById(groupId);
     currGroup.chat.push({
       id: userId,
       message: msg,
-      date: date
+      date: _date
     });
     await groupModel.findByIdAndUpdate(groupId, currGroup);
 

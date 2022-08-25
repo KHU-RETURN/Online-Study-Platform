@@ -48,13 +48,6 @@ function loadGroup(id) {
           original_value.color
         );
       }
-      nav.style.backgroundColor = original_value.color;
-      for (let i = 0; i < nav_items.length; i++) {
-        nav_items[i].style.borderColor = original_value.color;
-        nav_items[i].style.color = getTextColorByBackgroundColor(
-          original_value.color
-        );
-      }
     });
 }
 

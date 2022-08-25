@@ -47,12 +47,12 @@ function loadGroupTodoList() {
             var _rate = 0;
             if (_length == 0) _rate = 0;
             else _rate = _checked / _length;
-            let _content = `<div class='item'><div class='name'>그룹 공동 목표</div>`;
-            _content += `<div id='rate'>${_rate}</div></div>`;
+            // let _content = `<div class='item'><div class='name'>그룹 공동 목표</div>`;
+            // _content += `<div id='rate'>${_rate}</div></div>`;
 
-            content.innerHTML += _content;
+            // content.innerHTML += _content;
 
-
+            document.getElementById('rate').innerHTML = _rate;
             var str = String(_rate * 80) + '%';
             // console.log(str);
             // console.log(_rate);
@@ -215,7 +215,7 @@ function loadGoal() {
                     goal_rate.push({ name: member[i].name, id: member[i].id, rate: success_count[i] / todo_count[i] });
                 }
             }
-            console.log(me);
+            // console.log(me);
             var i = 0;
             var new_name = [];
             var new_goalrate = [];

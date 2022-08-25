@@ -66,6 +66,10 @@ header{
     overflow: scroll;
 }
 
+#check-list::-webkit-scrollbar{
+    display:none;
+}
+
 #check-list .input-group .form-control{
     clear: both;
     overflow: hidden;
