@@ -80,10 +80,7 @@ function exitGroup() {
   if (con_test == true) {
     fetch("/api/exit_group/" + key, {
       method: "DELETE",
-    }).then(
-      setTimeout(() => {
-        location.href = "/";
-      }, 100)
-    );
+    })
+      .then(setTimeout(()=>{location.href="/";}, 100));
   }
 }

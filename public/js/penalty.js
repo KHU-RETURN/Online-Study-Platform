@@ -59,9 +59,7 @@ function init() {
         item1.innerHTML += `<div class="id" id=${date_id + index}><img id="circle30" src="data:image/png;base64, ${element.profileImage}">${element.name}</div>`;
         item1.innerHTML += `<div class="amount">${date_amount}원</div>`;
         item.append(item1);
-        
         all_amount += element.amount;
-    
       });
 
       contents.append(item);

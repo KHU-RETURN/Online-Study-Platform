@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="css/sidebar.css" />
+  <link rel="stylesheet" href="css/chat.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700&display=swap"
+    rel="stylesheet" />
+  <link href="https://cdn.quilljs.com/1.3.6/quill.snow.css" rel="stylesheet" />
+  <link rel="stylesheet"
+    href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous" />
+  <link rel="stylesheet"
+    href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0" />
+  <title>오늘의 스터디</title>
+</head>
+
+<body>
+  <nav class="navbar navbar-expand-md navbar-light py-0">
+    <div id="sidebar">
+      <div class="container-fluid">
+        <div class="row">
+          <!--sidebar-->
+          <div class="col-2 sidebar">
+            <div class="buttons">
+              <div class="design"></div>
+              <button ref="#" class="material-symbols-outlined" onclick="location.href='/'">home</button>
+              <div class="text-black text-center mx-auto" id="user-name">
+                님
+              </div>
+              <div class="text-black text-center mx-auto" id="group-name">
+                현재그룹 이름
+              </div>
+              <div class="text-black text-center mx-auto" id="group-info">
+                <span id="explain">그룹설명</span>
+                <span id="number">/인원</span>
+              </div>
+              <ul class="navbar-nav flex-column mt-4">
+                <li class="nav-item">
+                  <a href="#" class="nav-link p-2 mb-4 sidebar-link" data-value="todo">
+                    Todo
+                  </a>
+                  <a href="#" class="nav-link p-2 mb-4 sidebar-link" data-value="schedule">
+                    일정
+                  </a>
+                  <a href="#" class="nav-link p-2 mb-4 current" id="current" data-value="chat">
+                    채팅
+                  </a>
+                  <a href="#" class="nav-link p-2 mb-4 sidebar-link" data-value="storage">
+                    저장소
+                  </a>
+                  <a href="#" class="nav-link p-2 mb-4 sidebar-link" data-value="penalty">
+                    벌금
+                  </a>
+                  <a href="#" class="nav-link p-2 mb-4 sidebar-link" data-value="goal">
+                    목표달성률
+                  </a>
+                </li>
+              </ul>
+            </div>
+          </div>
+          <!--content-->
+          <div class="col-10 ml-auto content">
+            <div>
+              <!-- 각자 코드 -->
+              <header>채팅</header>
+              <div id="contents" class="row">
+                <div id="meeting" class="col-8">
+                  <div id="info">
+                    <div id="title_info" class="title_info">
+                      <label for="meeting_title">회의 제목: </label>
+                      <input type="text" id="meeting_title" class="meeting_title" name="meeting_title"
+                        placeholder="회의제목을 입력해주세요" autocomplete="off" />
+                    </div>
+                    <button type="button" id="start_button" class="btn toggle_button">시작하기</button>
+                  </div>
+                  <div id="editor"></div>
+                </div>
+                <div id="chat" class="col-4">
+                  <div id="messages">
+                  </div>
+                  <form id="chatSend">
+                    <input id="message" placeholder="메시지를 입력하세요" autocomplete="off"></input>
+                    <button id="send" type="submit"><span class="material-symbols-outlined" id="send_icon">
+                        send
+                      </span></button>
+                  </form>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </nav>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+  <script src="/socket.io/socket.io.js"></script>
+  <script src="https://cdn.quilljs.com/1.3.6/quill.js"></script>
+  <script type="text/javascript">const groupId = '<%-groupId%>'; const userId = '<%-user.id%>';</script>
+  <script type="text/javascript" src="js/sidebar.js"></script>
+  <script src="js/chat.js"></script>
+</body>
+
+</html>

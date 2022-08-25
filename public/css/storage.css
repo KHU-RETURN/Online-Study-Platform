@@ -41,11 +41,13 @@ header {
 }
 
 #contents {
-  margin: 0px 0px 0px 60px;
+  margin: 0px 0px 0px 46px;
+  align-items: center;
 }
 
 #date {
   font-weight: 500;
+  margin-right: 10px;
   font-size: var(--font-base);
 }
 
@@ -56,12 +58,11 @@ header {
 }
 
 #info {
-  margin: 0px 0px 15px 0px;
   font-size: var(--font-base);
   display: flex;
-  flex-direction: row;
   justify-content: space-between;
   align-items: center;
+  margin-bottom: 10px;
 }
 
 /*.ql-toolbar {
@@ -69,35 +70,55 @@ header {
 }*/
 
 .ql-container.ql-snow {
-  background-color: var(--light-gray);
-  border: none !important;
-  height: 70vh;
+  height: 65vh;
+  border-top: 1px solid #cccccc !important;
   /*width: 50%;*/
 }
 
-/*#meeting {
-  display: flex;
-  flex-direction: column;
-}*/
+#meeting {
+  padding-left: 0px;
+  padding-right: 20px;
+}
 
 #chatting {
-  margin: 10px;
+  /*margin: 10px;*/
   display: flex;
   flex-direction: column;
+  justify-content: flex-end;
   height: 75vh;
+  padding: 15px;
+  border-radius: 12px;
+  background-color: var(--light-gray);
   overflow-y: scroll;
   font-size: var(--font-base);
 }
 
 #chatting::-webkit-scrollbar {
-  display: none; /* Chrome, Safari, Opera*/
+  width: 10px;
+  height: 10px;
+}
+
+#chatting::-webkit-scrollbar-thumb {
+  background-color: #b0b0b0;
+  border-radius: 10px;
+  background-clip: padding-box;
+  border: 2px solid transparent;
+}
+
+#chatting::-webkit-scrollbar-track {
+  background-color: var(--light-gray);
+  border-radius: 10px;
+  box-shadow: inset 0px 0px 3px white;
 }
 
 .chat_left {
   margin: 20px;
+  display: flex;
+  flex-direction: row;
   align-self: flex-start;
 }
-.chat_left > .message {
+
+.chat_left>.message {
   padding: 10px;
   margin: 5px;
   border-radius: 10px;
@@ -106,10 +127,12 @@ header {
 
 .chat_right {
   margin: 20px;
+  display: flex;
+  flex-direction: row;
   align-self: flex-end;
 }
 
-.chat_right > .message {
+.chat_right>.message {
   padding: 10px;
   margin: 5px;
   border-radius: 10px;
@@ -129,5 +152,24 @@ header {
 }
 
 .ql-editor::-webkit-scrollbar {
-  display: none; /* Chrome, Safari, Opera*/
+  display: none;
+  /* Chrome, Safari, Opera*/
+}
+
+.meeting_title {
+  border: none;
+  background-color: var(--light-gray);
+  padding-left: 10px;
+  font-family: "Noto Sans KR", sans-serif;
+}
+
+.meeting_title:focus {
+  outline: none;
+}
+
+.title_info {
+  background-color: var(--light-gray);
+  border-radius: 12px;
+  padding: 10px;
+  font-size: var(--font-sm);
 }

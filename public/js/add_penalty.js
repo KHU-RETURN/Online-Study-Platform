@@ -1,30 +1,57 @@
-adds.addEventListener("click",addPenalty);
+var adds = document.getElementById("add");
+adds.addEventListener("click", addPenalty);
 
-fetch("http://localhost:5000/groups/5") //id로 불러옴
+var select = document.getElementById("input_name");
+select.addEventListener("change", selectFinish);
+
+fetch("/api/group/" + groupId) //id로 불러옴
     .then((response) => response.json())
     .then((data) => {
-      data_list = data.fine;
-      console.log(data_list);
-})
+        groupMembers = data.groupMember;
+        groupMembers.forEach((member) => {
+            fetch("/api/get_user/" + member.id)
+                .then((response2) => response2.json())
+                .then((response2) => {
+                    var opt = document.createElement('option');
+                    opt.value = member.id;
+                    opt.innerHTML = response2.displayName;
+                    select.appendChild(opt);
+                    selectFinish();
+                })
+        })
+    })
 
-function addPenalty(){
-    var input_id=document.getElementById("input_id").value;
-    var input_date=document.getElementById("input_date").value;
-    var input_amount=document.getElementById("input_amount").value;
-    var _fine={
-        date: input_date,
+function selectFinish() {
+    fetch("/api/get_user/" + select.options[select.selectedIndex].value)
+        .then((response2) => response2.json())
+        .then((response2) => {
+            document.getElementById("circle").setAttribute("src", "data:image/png;base64, " + response2.photos);
+        })
+}
+
+function addPenalty() {
+    var input_id = select.options[select.selectedIndex].value;
+    var input_date = document.getElementById("input_date").value;
+    var date = new Date(input_date);
+    var input_amount = document.getElementById("input_amount").value;
+    var amount = parseInt(input_amount);
+    var _fine = {
+        date: date,
         id: input_id,
-        amount: input_amount
+        amount: amount
     };
-    fetch("http://localhost:5000/groups/5/fine", {//이게 맞나?
+    if(input_id == "" || input_date == "" || input_amount == "") return;
+    console.log(_fine);
+    fetch("/api/add_penalty", {
         method: "POST",
         body: JSON.stringify(_fine),
         headers: {
-          "content-type": "application/json",
+            "content-type": "application/json",
         },
     })
-    .then((response) => response.text())
-    .then((text) => {
-        console.log(text);//location을 어떻게 해야할지,,
-    })
+        .then((response) => response.text())
+        .then((text) => {
+            console.log(text);
+            setTimeout(() => { location.href = "/penalty"; },100);
+        })
 }

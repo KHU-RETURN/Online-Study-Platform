@@ -1,0 +1,212 @@
+:root {
+  --font-xs: 12px;
+  --font-sm: 14px;
+  --font-base: 16px;
+  --font-lg: 18px;
+  --font-xl: 20px;
+  --dark-gray: #efefef;
+  --light-gray: #f9f9f9;
+  --main-color: #ddeeaf;
+  --point-color: #677e25;
+}
+
+html,
+body {
+  font-family: "Noto Sans KR", sans-serif;
+  margin: 0;
+}
+
+header {
+  color: var(--point-color);
+  font-size: 28px;
+  font-weight: 700;
+  margin: 30px 0px 30px 46px;
+}
+
+#title_button {
+  font-family: "Noto Sans KR", sans-serif;
+  font-size: var(--font-sm);
+  font-weight: 300;
+  background-color: var(--light-gray);
+  /*box-shadow: 0px 0px 2px rgba(0, 0, 0, 0.25);*/
+  border-radius: 20px;
+  border: none;
+
+  padding: 17px 35px;
+  margin: 19px 18px 43px 0px;
+
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+}
+
+#contents {
+  margin: 0px 0px 0px 60px;
+  align-items: center;
+}
+
+.date {
+  font-weight: 400;
+  font-size: var(--font-sm);
+}
+
+#chat {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  height: 80vh;
+  padding: 15px;
+  border-radius: 12px;
+  background-color: var(--light-gray);
+}
+
+#messages {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  /* 구식 브라우저를 위한 대비책(fallback) */
+  height: -webkit-calc(90% - 50px);
+  /* for Chrome, Safari */
+  height: -moz-calc(90% - 50px);
+  /* for Firefox */
+  height: calc(90% - 50px);
+  /* for IE */
+  overflow-y: scroll;
+  font-size: var(--font-sm);
+}
+
+#messages::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+
+#messages::-webkit-scrollbar-thumb {
+  background-color: #b0b0b0;
+  border-radius: 10px;
+  background-clip: padding-box;
+  border: 2px solid transparent;
+}
+
+#messages::-webkit-scrollbar-track {
+  background-color: var(--light-gray);
+  border-radius: 10px;
+  box-shadow: inset 0px 0px 3px white;
+}
+
+#chatSend {
+  height: 10%;
+  margin: 10px;
+  display: flex;
+  justify-content: center;
+}
+
+.chat_message {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+#message {
+  padding-left: 10px;
+  line-height: 50px;
+  width: 90%;
+  resize: none;
+  border: none;
+  border-radius: 12px 0px 0px 12px;
+}
+
+#message:focus {
+  outline: none;
+}
+
+#send {
+  width: 20%;
+  border: none;
+  border-radius: 0px 12px 12px 0px;
+  background-color: white;
+}
+
+#circle {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  margin-right: 5px;
+}
+
+.chat_left {
+  margin: 10px;
+  display: flex;
+  flex-direction: row;
+  align-self: flex-start;
+}
+
+.chat_left>.message {
+  padding: 10px;
+  margin: 5px;
+  border-radius: 10px;
+  background-color: var(--dark-gray);
+}
+
+.chat_right {
+  margin: 10px;
+  display: flex;
+  flex-direction: row;
+  align-self: flex-end;
+}
+
+.chat_right>.message {
+  padding: 10px;
+  margin: 5px;
+  border-radius: 10px;
+  background-color: var(--main-color);
+}
+
+#start_button,
+#save_button {
+  background-color: var(--point-color);
+  color: white;
+  font-size: var(--font-base);
+  margin-left: 5px;
+}
+
+#info {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.meeting_title {
+  border: none;
+  background-color: var(--light-gray);
+  padding-left: 10px;
+  font-family: "Noto Sans KR", sans-serif;
+  font-size: var(--font-sm);
+}
+
+.meeting_title:focus {
+  outline: none;
+}
+
+.title_info {
+  background-color: var(--light-gray);
+  border-radius: 12px;
+  padding: 10px;
+}
+
+.ql-container.ql-snow {
+  height: 65vh;
+}
+
+#meeting {
+  padding-left: 0px;
+  padding-right: 20px;
+}
+
+#send_icon {
+  background-color: white;
+  padding: 0px;
+  vertical-align: middle;
+  transform: rotate(-30deg);
+  font-size: 26px;
+}

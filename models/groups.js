@@ -8,26 +8,26 @@ const groupSchema = new mongoose.Schema({
         id: String,
         todo: [{
             text: String,
+            date: String,
             checked: Boolean,
         }]
     }],
-    calendar: [{
-        date: Date,
-        title: String,
-        content: String,
-    }],
+    calendar: [],
     conference: [{
         title: String,
+        record: [],
+        startTime: Date,
+        endTime: Date,
+    }],
+    chat: [{
+        id: String,
+        message: String,
         date: Date,
-        record: String,
-        chat: [{
-            id: String,
-            message: String
-        }]
     }],
     fine: [{
         date: Date,
         id: String,
+        amount: Number,
     }],
     todo: [{
         text: String,

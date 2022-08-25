@@ -37,6 +37,26 @@
     padding: 10px;
     margin-left:20px;
   }
+  input[type="date"] {
+    border: none;
+    border-radius: 12px;
+    width: 155px;
+    background-color: var(--dark-gray);
+    font-family: "Noto Sans KR", sans-serif;
+    font-size: var(--font-sm);
+    padding: 10px;
+    margin-left:20px;
+  }
+  #input_name{
+    border: none;
+    border-radius: 12px;
+    width: 155px;
+    background-color: var(--dark-gray);
+    font-family: "Noto Sans KR", sans-serif;
+    font-size: var(--font-sm);
+    padding: 10px;
+    margin-left:20px;
+  }
   .input_item {
       align-content:center;
     display: flex;
@@ -76,3 +96,11 @@
     border: 0;
     margin: 5px;
   }
+
+  #circle{
+    width: 42px;
+    height: 42px;
+    background-color: #FFFFFF;
+    border-radius: 50%;
+    margin-left: 5px;
+}

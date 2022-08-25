@@ -24,9 +24,11 @@
     "express-session": "^1.17.3",
     "image-to-base64": "^2.2.0",
     "mongoose": "^6.5.0",
+    "node-fetch": "^2.6.7",
     "passport": "^0.6.0",
     "passport-google-oauth": "^2.0.0",
     "path": "^0.12.7",
-    "session-file-store": "^1.5.0"
+    "session-file-store": "^1.5.0",
+    "socket.io": "^4.5.1"
   }
 }

@@ -6,14 +6,17 @@ const express = require('express'),
   passport = require('passport'),
   session = require('express-session'),
   mongoose = require('mongoose'),
-  MongoStore = require('connect-mongo');
+  MongoStore = require('connect-mongo'),
+  http = require("http").Server(app),
+  socket = require('socket.io')(http),
+  fetch = require('node-fetch');
 
 const authRouter = require('./routes/auth');
 const apiRouter = require('./routes/api');
 const pageRouter = require('./routes/page');
 
 const PORT = process.env.PORT || 3000;
-app.listen(PORT, () => {
+http.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}.`);
 });
 
@@ -45,8 +48,43 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(express.static(path.join(__dirname, 'public')));
 
+app.use(function (req, res, next) {
+  res.locals.user = req.session.user;
+  res.locals.groupId = req.session.groupId;
+  next();
+});
+
 app.use('/auth', authRouter);
 app.use('/api', apiRouter);
 app.use('/', pageRouter);
+
+app.use('/robots.txt', function (req, res, next) {
+  res.type('text/plain')
+  res.send("User-agent: *\nDisallow: /");
+});
+
+socket.on("connection", socket => {
+
+  socket.on("disconnect", function () {
+  });
+
+  socket.on("chat message", async function (userId, msg, groupId) {
+    const date = await fetch("http://onlstudies.com/api/get_date");
+    const dateText = await date.text();
+
+    const _date = new Date(parseInt(dateText));
+
+    const groupModel = require('./models/groups.js');
+    var currGroup = await groupModel.findById(groupId);
+    currGroup.chat.push({
+      id: userId,
+      message: msg,
+      date: _date
+    });
+    await groupModel.findByIdAndUpdate(groupId, currGroup);
+
+    socket.broadcast.emit("received");
+  });
+});
 
 module.exports = app;

@@ -59,6 +59,15 @@ header{
 #check-list{
     align-items: center;
     margin-top: 20px;
+    height: 90vh; /* 구식 브라우저를 위한 대비책(fallback) */
+    height: -webkit-calc(100vh - 450px); /* for Chrome, Safari */
+    height: -moz-calc(100vh - 450px); /* for Firefox */
+    height: calc(100vh - 450px); /* for IE */
+    overflow: scroll;
+}
+
+#check-list::-webkit-scrollbar{
+    display:none;
 }
 
 #check-list .input-group .form-control{

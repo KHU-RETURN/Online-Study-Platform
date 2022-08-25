@@ -22,7 +22,7 @@
       integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx"
       crossorigin="anonymous"
     />
-    <title>onlstuides</title>
+    <title>오늘의 스터디</title>
   </head>
   <body>
     <nav class="navbar navbar-expand-md navbar-light pt-0">
@@ -33,9 +33,9 @@
             <div class="col-2 sidebar">
               <div class="buttons">
                 <div class="design"></div>
-                <button ref="#" class="material-symbols-outlined">home</button>
+                <button ref="#" class="material-symbols-outlined" onclick="location.href='/'">home</button>
                 <div class="text-black text-center mx-auto" id="user-name">
-                  민수민님
+                  님
                 </div>
                 <div class="text-black text-center mx-auto" id="group-name">
                   현재그룹 이름
@@ -48,23 +48,23 @@
                   <li class="nav-item">
                     <a
                       href="#"
-                      class="nav-link p-2 mb-4 sidebar-link"
+                      class="nav-link text-#657D24 p-2 mb-4 sidebar-link" data-value="todo"
                     >
                       Todo
                     </a>
-                    <a href="#" class="nav-link p-2 mb-4 sidebar-link">
+                    <a href="#" class="nav-link p-2 mb-4 sidebar-link" data-value="schedule">
                       일정
                     </a>
-                    <a href="#" class="nav-link p-2 mb-4 sidebar-link">
+                    <a href="#" class="nav-link p-2 mb-4 sidebar-link" data-value="chat">
                       채팅
                     </a>
-                    <a href="#" class="nav-link p-2 mb-4 current" id="current">
+                    <a href="#" class="nav-link p-2 mb-4 current" id="current" data-value="storage">
                       저장소
                     </a>
-                    <a href="#" class="nav-link p-2 mb-4 sidebar-link">
+                    <a href="#" class="nav-link p-2 mb-4 sidebar-link" data-value="penalty">
                       벌금
                     </a>
-                    <a href="#" class="nav-link p-2 mb-4 sidebar-link">
+                    <a href="#" class="nav-link p-2 mb-4 sidebar-link" data-value="goal">
                       목표달성률
                     </a>
                   </li>
@@ -83,6 +83,7 @@
         </div>
       </div>
     </nav>
+    <script type="text/javascript">const groupId = '<%-groupId%>';</script>
     <script type="text/javascript" src="js/storage.js"></script>
     <script type="text/javascript" src="js/sidebar.js"></script>
   </body>

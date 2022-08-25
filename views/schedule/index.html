@@ -1,254 +1,261 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="public/css/sidebar.css" />
-    <link rel="stylesheet" href="public/css/storage.css" />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-    href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700&display=swap"
-    rel="stylesheet"
-    />
-    <link
-    rel="stylesheet"
-    href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200"
-    />
-    <link
-    href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css"
-    rel="stylesheet"
-    integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx"
-    crossorigin="anonymous"
-    />
-    <!-- 화면 해상도에 따라 글자 크기 대응(모바일 대응) -->
-    <meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa" crossorigin="anonymous"></script>
-    <!-- jquery CDN -->
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <!-- fullcalendar CDN -->
-    <link href='https://cdn.jsdelivr.net/npm/fullcalendar@5.8.0/main.min.css' rel='stylesheet' />
-    <script src='https://cdn.jsdelivr.net/npm/fullcalendar@5.8.0/main.min.js'></script>
-    <!-- fullcalendar 언어 CDN -->
-    <script src='https://cdn.jsdelivr.net/npm/fullcalendar@5.8.0/locales-all.min.js'></script>
-    <style>
-    /* body 스타일 */
-        html, body {
-    
-            font-family: Arial, Helvetica Neue, Helvetica, sans-serif;
-            font-size: 14px;
-        }
 
-        body{
-            padding-right: 46px;
-            padding-bottom: 46px;
-        }
-    
-        a, a:link, a:visited{
-        color: inherit;
-        text-decoration: none;
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="css/sidebar.css" />
+  <link rel="stylesheet" href="css/storage.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700&display=swap"
+    rel="stylesheet" />
+  <link rel="stylesheet"
+    href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous" />
+  <!-- 화면 해상도에 따라 글자 크기 대응(모바일 대응) -->
+  <meta name="viewport"
+    content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa"
+    crossorigin="anonymous"></script>
+  <!-- jquery CDN -->
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <!-- fullcalendar CDN -->
+  <link href='https://cdn.jsdelivr.net/npm/fullcalendar@5.8.0/main.min.css' rel='stylesheet' />
+  <script src='https://cdn.jsdelivr.net/npm/fullcalendar@5.8.0/main.min.js'></script>
+  <!-- fullcalendar 언어 CDN -->
+  <script src='https://cdn.jsdelivr.net/npm/fullcalendar@5.8.0/locales-all.min.js'></script>
+  <style>
+    /* body 스타일 */
+    .content {
+
+      font-family: Arial, Helvetica Neue, Helvetica, sans-serif;
+      font-size: 14px;
     }
-    
-        /* 캘린더 위의 해더 스타일(날짜가 있는 부분) */
-        .fc-header-toolbar {
-            padding-top: 1em;
-            padding-left: 1em;
-            padding-right: 1em;
-        }
-        </style>
-    <title>onlstuides</title>
+
+    body {
+      padding-right: 46px;
+      padding-bottom: 46px;
+    }
+
+    a,
+    a:link,
+    a:visited {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    /* 캘린더 위의 해더 스타일(날짜가 있는 부분) */
+    .fc-header-toolbar {
+      padding-top: 1em;
+      padding-left: 1em;
+      padding-right: 1em;
+    }
+  </style>
+  <title>오늘의 스터디</title>
 </head>
+
 <body>
-    <nav class="navbar navbar-expand-md navbar-light py-0">
+  <nav class="navbar navbar-expand-md navbar-light pt-0">
     <div id="sidebar">
-        <div class="container-fluid">
+      <div class="container-fluid">
         <div class="row">
-            <!--sidebar-->
-            <div class="col-2 sidebar">
+          <!--sidebar-->
+          <div class="col-2 sidebar">
             <div class="buttons">
-                <div class="design"></div>
-                <button ref="#" class="material-symbols-outlined" onclick="location.href='/'">home</button>
-                <div class="text-black text-center mx-auto" id="user-name">
+              <div class="design"></div>
+              <button ref="#" class="material-symbols-outlined" onclick="location.href='/'">home</button>
+              <div class="text-black text-center mx-auto" id="user-name">
                 님
-                </div>
-                <div class="text-black text-center mx-auto" id="group-name">
+              </div>
+              <div class="text-black text-center mx-auto" id="group-name">
                 현재그룹 이름
-                </div>
-                <div class="text-black text-center mx-auto" id="group-info">
+              </div>
+              <div class="text-black text-center mx-auto" id="group-info">
                 <span id="explain">그룹설명</span>
                 <span id="number">/인원</span>
-                </div>
-                <ul class="navbar-nav flex-column mt-4">
+              </div>
+              <ul class="navbar-nav flex-column mt-4">
                 <li class="nav-item">
-                    <a
-                    href="#"
-                    class="nav-link text-#657D24 p-2 mb-4 sidebar-link" data-value="todo"
-                    >
+                  <a href="#" class="nav-link text-#657D24 p-2 mb-4 sidebar-link" data-value="todo">
                     Todo
-                    </a>
-                    <a href="#" class="nav-link p-2 mb-4 current" id="current" data-value="schedule">
+                  </a>
+                  <a href="#" class="nav-link p-2 mb-4 current" id="current" data-value="schedule">
                     일정
-                    </a>
-                    <a href="#" class="nav-link p-2 mb-4 sidebar-link" data-value="chat">
+                  </a>
+                  <a href="#" class="nav-link p-2 mb-4 sidebar-link" data-value="chat">
                     채팅
-                    </a>
-                    <a href="#" class="nav-link p-2 mb-4 sidebar-link" data-value="storage">
+                  </a>
+                  <a href="#" class="nav-link p-2 mb-4 sidebar-link" data-value="storage">
                     저장소
-                    </a>
-                    <a href="#" class="nav-link p-2 mb-4 sidebar-link" data-value="penalty">
+                  </a>
+                  <a href="#" class="nav-link p-2 mb-4 sidebar-link" data-value="penalty">
                     벌금
-                    </a>
-                    <a href="#" class="nav-link p-2 mb-4 sidebar-link" data-value="goal">
+                  </a>
+                  <a href="#" class="nav-link p-2 mb-4 sidebar-link" data-value="goal">
                     목표달성률
-                    </a>
+                  </a>
                 </li>
-                </ul>
+              </ul>
             </div>
-            </div>
-            <!--content-->
-            <div class="col-10 ml-auto py-0 content">
+          </div>
+          <!--content-->
+          <div class="col-10 ml-auto py-2 content">
             <div>
-                <!-- 각자 코드 -->
-                <header>일정</header>
-                <div id="contents">
-                    <!-- calendar 태그 -->
-    <div id='calendar-container'>
-        <div id='calendar'></div>
-    </div>
-    <!--
+              <!-- 각자 코드 -->
+              <header>일정</header>
+              <div id="contents">
+                <!-- calendar 태그 -->
+                <div id='calendar-container'>
+                  <div id='calendar'></div>
+                </div>
+                <!--
     Button trigger modal 
     <button class="material-symbols-outlined" id="calendar" data-bs-toggle="modal" data-bs-target="#exampleModal">
         calendar_month
     </button>
     -->
-    <!-- Modal -->
-    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered">
-            <div class="modal-content">
-                <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Calendar</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body">
-                    <div class="mb-3">
-                        <label for="exampleDropdownForShedule" class="form-label">일정 제목</label>
-                        <input type="text" class="form-control" id="exampleDropdownForShedule" placeholder="일정을 추가하세요">
+                <!-- Modal -->
+                <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
+                  aria-hidden="true">
+                  <div class="modal-dialog modal-dialog-centered">
+                    <div class="modal-content">
+                      <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Calendar</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                      </div>
+                      <div class="modal-body">
+                        <div class="mb-3">
+                          <label for="exampleDropdownForShedule" class="form-label">일정 제목</label>
+                          <input type="text" class="form-control" id="exampleDropdownForShedule"
+                            placeholder="일정을 추가하세요">
+                        </div>
+                      </div>
+                      <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">취소</button>
+                        <button type="button" class="btn btn-primary" data-bs-dismiss="modal"
+                          id="addSchedule">추가</button>
+                      </div>
                     </div>
+                  </div>
                 </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">취소</button>
-                    <button type="button" class="btn btn-primary" data-bs-dismiss="modal" id="addSchedule">추가</button>
-                </div>
+              </div>
             </div>
+          </div>
         </div>
+      </div>
     </div>
-                </div>
-            </div>
-            </div>
-        </div>
-        </div>
-    </div>
-    </nav>
-    <script type="text/javascript">const groupId = '<%-groupId%>';</script>
-    <script type="text/javascript" src="js/sidebar.js"></script>
-    <script>
-        (function(){
-            $(function(){
-            // calendar element 취득
-            var calendarEl = $('#calendar')[0];
-            // full-calendar 생성하기
-            var calendar = new FullCalendar.Calendar(calendarEl, {
-                height: '700px', // calendar 높이 설정
-                expandRows: true, // 화면에 맞게 높이 재설정
-                slotMinTime: '06:00', // Day 캘린더에서 시작 시간
-                slotMaxTime: '24:00', // Day 캘린더에서 종료 시간
-                // 해더에 표시할 툴바
-                headerToolbar: {
-                    left: 'prev,next today',
-                    center: 'title',
-                    right: 'dayGridMonth,timeGridWeek,timeGridDay,listWeek'
-                },
-                initialView: 'dayGridMonth', // 초기 로드 될때 보이는 캘린더 화면(기본 설정: 달)
-                initialDate: new Date(), // 초기 날짜 설정 (설정하지 않으면 오늘 날짜가 보인다.)
-                navLinks: true, // 날짜를 선택하면 Day 캘린더나 Week 캘린더로 링크
-                editable: true, // 수정 가능?
-                selectable: true, // 달력 일자 드래그 설정가능
-                nowIndicator: true, // 현재 시간 마크
-                dayMaxEvents: true, // 이벤트가 오버되면 높이 제한 (+ 몇 개식으로 표현)
-                locale: 'ko', // 한국어 설정
-                
-                eventAdd: function(obj) { // 이벤트가 추가되면 발생하는 이벤트
-                    console.log(obj);
-                    console.log(calendar.getEvents());
-                },
-                eventChange: function(obj) { // 이벤트가 수정되면 발생하는 이벤트
-                    console.log(obj);
-                },
-                eventRemove: function(obj){ // 이벤트가 삭제되면 발생하는 이벤트
-                    console.log(obj);
-                },
-                select: function(arg) { // 캘린더에서 드래그로 이벤트를 생성할 수 있다.
-                $('#exampleModal').modal("show");
-                $('#addSchedule').off('click').on('click',function(){
-                    if($('input').val() != ''){
-                        calendar.addEvent({
-                        title: $('input').val(),
-                        start: arg.start,
-                        end: arg.end,
-                        allDay: arg.allDay
-                        })
-                    }
-                })
-                $("input").off('keyup').on('keyup', function(e){ //엔터시 입력된 값 일정에 추가
-                    if(e.keyCode == 13 && $("input").val() != ""){ // 입력된 값이 없을 경우 추가 안됨
-                        calendar.addEvent({
-                        title: $('input').val(),
-                        start: arg.start,
-                        end: arg.end,
-                        allDay: arg.allDay
-                        })
-                        $('#exampleModal').modal("hide");
-                    }
-                })
-                $('input').val('');
-                },
-                /**
-                 * 이벤트 선택해서 삭제하기
-                 */
-                eventClick: function (info){
-                if(confirm("'"+ info.event.title +"' 일정을 삭제하시겠습니까 ?")){
-                    // 확인 클릭 시
-                    info.event.remove();
+  </nav>
+  <script type="text/javascript">const groupId = '<%-groupId%>';</script>
+  <script type="text/javascript" src="js/sidebar.js"></script>
+  <script>
+    (function () {
+      $(function () {
+        // calendar element 취득
+        var calendarEl = $('#calendar')[0];
+
+        function editCalendar(events) {
+          $.ajax({
+            url: "/api/edit_calendar",
+            method: "PUT",
+            dataType: "json",
+            data: JSON.stringify(events),
+            contentType: 'application/json',
+          })
+        }
+
+        $.ajax({
+          url: "/api/get_calendar",
+          method: "GET",
+        }).then(result => {
+          // full-calendar 생성하기
+          var calendar = new FullCalendar.Calendar(calendarEl, {
+            height: '700px', // calendar 높이 설정
+            expandRows: true, // 화면에 맞게 높이 재설정
+            slotMinTime: '06:00', // Day 캘린더에서 시작 시간
+            slotMaxTime: '24:00', // Day 캘린더에서 종료 시간
+            // 해더에 표시할 툴바
+            headerToolbar: {
+              left: 'prev,next today',
+              center: 'title',
+              right: 'dayGridMonth,timeGridWeek,timeGridDay,listWeek'
+            },
+            initialView: 'dayGridMonth', // 초기 로드 될때 보이는 캘린더 화면(기본 설정: 달)
+            initialDate: new Date(), // 초기 날짜 설정 (설정하지 않으면 오늘 날짜가 보인다.)
+            navLinks: true, // 날짜를 선택하면 Day 캘린더나 Week 캘린더로 링크
+            editable: true, // 수정 가능?
+            selectable: true, // 달력 일자 드래그 설정가능
+            nowIndicator: true, // 현재 시간 마크
+            dayMaxEvents: true, // 이벤트가 오버되면 높이 제한 (+ 몇 개식으로 표현)
+            locale: 'ko', // 한국어 설정
+
+            eventAdd: function (obj) { // 이벤트가 추가되면 발생하는 이벤트
+              editCalendar(calendar.getEvents());
+            },
+            eventChange: function (obj) { // 이벤트가 수정되면 발생하는 이벤트
+              editCalendar(calendar.getEvents());
+            },
+            eventRemove: function (obj) { // 이벤트가 삭제되면 발생하는 이벤트
+              editCalendar(calendar.getEvents());
+            },
+            select: function (arg) { // 캘린더에서 드래그로 이벤트를 생성할 수 있다.
+              $('#exampleModal').modal("show");
+              $('#addSchedule').off('click').on('click', function () {
+                if ($('input').val() != '') {
+                  calendar.addEvent({
+                    title: $('input').val(),
+                    start: arg.start,
+                    end: arg.end,
+                    allDay: arg.allDay
+                  })
                 }
-    
-                console.log(info.event);
-                var events = new Array(); // Json 데이터를 받기 위한 배열 선언
-                var obj = new Object();
-                    obj.title = info.event._def.title;
-                    obj.start = info.event._instance.range.start;
-                    events.push(obj);
-    
-                $(function deleteData(){
-                    $.ajax({
-                        url: "/full-calendar/calendar-admin-update",
-                        method: "DELETE",
-                        dataType: "json",
-                        data: JSON.stringify(events),
-                        contentType: 'application/json',
-                    })
-                })
+              })
+              $("input").off('keyup').on('keyup', function (e) { //엔터시 입력된 값 일정에 추가
+                if (e.keyCode == 13 && $("input").val() != "") { // 입력된 값이 없을 경우 추가 안됨
+                  calendar.addEvent({
+                    title: $('input').val(),
+                    start: arg.start,
+                    end: arg.end,
+                    allDay: arg.allDay
+                  })
+                  $('#exampleModal').modal("hide");
+                }
+              })
+              $('input').val('');
+            },
+            /**
+             * 이벤트 선택해서 삭제하기
+             */
+            eventClick: function (info) {
+              if (confirm("'" + info.event.title + "' 일정을 삭제하시겠습니까 ?")) {
+                // 확인 클릭 시
+                info.event.remove();
+              }
+
+              var events = new Array(); // Json 데이터를 받기 위한 배열 선언
+              var obj = new Object();
+              obj.title = info.event._def.title;
+              obj.start = info.event._instance.range.start;
+              events.push(obj);
             },
             // 이벤트 
-            events: [
+            events: result
+          });
+          calendar.render();
+        })
 
-            ]
-        });
-            calendar.render();
-            });
-        })();
-        
-    </script>
+
+
+
+      });
+    })();
+
+  </script>
 </body>
+
 </html>

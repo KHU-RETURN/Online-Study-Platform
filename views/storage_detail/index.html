@@ -26,7 +26,7 @@
       href="https://cdn.quilljs.com/1.3.6/quill.snow.css"
       rel="stylesheet"
     />
-    <title>onlstuides</title>
+    <title>오늘의 스터디</title>
   </head>
   <body>
     <nav class="navbar navbar-expand-md navbar-light py-0">
@@ -38,9 +38,9 @@
             <div class="col-2 sidebar">
               <div class="buttons">
                 <div class="design"></div>
-                <button ref="#" class="material-symbols-outlined">home</button>
+                <button ref="#" class="material-symbols-outlined" onclick="location.href='/'">home</button>
                 <div class="text-black text-center mx-auto" id="user-name">
-                  민수민님
+                  님
                 </div>
                 <div class="text-black text-center mx-auto" id="group-name">
                   현재그룹 이름
@@ -51,22 +51,22 @@
                 </div>
                 <ul class="navbar-nav flex-column mt-4">
                   <li class="nav-item">
-                    <a href="#" class="nav-link p-2 mb-4 sidebar-link">
+                    <a href="#" class="nav-link text-#657D24 p-2 mb-4 sidebar-link" data-value="todo">
                       Todo
                     </a>
-                    <a href="#" class="nav-link p-2 mb-4 sidebar-link">
+                    <a href="#" class="nav-link p-2 mb-4 sidebar-link" data-value="schedule">
                       일정
                     </a>
-                    <a href="#" class="nav-link p-2 mb-4 sidebar-link">
+                    <a href="#" class="nav-link p-2 mb-4 sidebar-link" data-value="chat">
                       채팅
                     </a>
-                    <a href="#" class="nav-link p-2 mb-4 current" id="current">
+                    <a href="#" class="nav-link p-2 mb-4 current" id="current" data-value="storage">
                       저장소
                     </a>
-                    <a href="#" class="nav-link p-2 mb-4 sidebar-link">
+                    <a href="#" class="nav-link p-2 mb-4 sidebar-link" data-value="penalty">
                       벌금
                     </a>
-                    <a href="#" class="nav-link p-2 mb-4 sidebar-link">
+                    <a href="#" class="nav-link p-2 mb-4 sidebar-link" data-value="goal">
                       목표달성률
                     </a>
                   </li>
@@ -77,13 +77,22 @@
             <div class="col-10 ml-auto content">
               <div>
                 <!-- 각자 코드 -->
-                <header>저장소 상세페이지</header>
+                <header>저장소</header>
                 <div id="contents" class="row">
-                  <div id="meeting" class="col-7">
+                  <div id="meeting" class="col-8">
                     <div id="info">
                       <div class="left_info">
-                        <span id="date">2022년 8월 10일</span>
-                        <span id="title">1차 회의록</span>
+                        <span id="date">0000년 00월 00일</span>
+                        <span id="title" class="title_info">
+                          <input
+                            type="text"
+                            id="meeting_title"
+                            class="meeting_title"
+                            name="meeting_title"
+                            value="Untitled"
+                            autocomplete="off"
+                          />
+                        </span>
                       </div>
                       <button
                         type="button"
@@ -103,7 +112,9 @@
         </div>
       </div>
     </nav>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <script src="https://cdn.quilljs.com/1.3.6/quill.js"></script>
+    <script type="text/javascript">const groupId = '<%-groupId%>';</script>
     <script type="text/javascript" src="js/storage_detail.js"></script>
     <script type="text/javascript" src="js/sidebar.js"></script>
   </body>
