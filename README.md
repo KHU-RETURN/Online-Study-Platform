@@ -58,7 +58,7 @@
 </br>
 
 ## 멤버 
-|            [민수민](https://github.com/https://github.com/mynameSumin)             |            [서연진](https://github.com/seoyeonjin)             |             [이광호](https://github.com/kwongholee)             |             [정주희](https://github.com/wjdwngml1001)             |              [최은석](https://github.com/Eunseok)               |
+|            [민수민](https://github.com/mynameSumin)             |            [서연진](https://github.com/seoyeonjin)             |             [이광호](https://github.com/kwongholee)             |             [정주희](https://github.com/wjdwngml1001)             |              [최은석](https://github.com/Eunseok)               |
 | :----------------------------------------------------------: | :----------------------------------------------------------: | :----------------------------------------------------------: | :----------------------------------------------------------: | :----------------------------------------------------------: |
 | <img src="https://avatars.githubusercontent.com/u/97847260?s=400&v=4" width=200px alt="_"/> | <img src="https://avatars.githubusercontent.com/u/68274803?s=400&v=4" width=200px alt="_"/> | <img src="https://avatars.githubusercontent.com/u/105145175?s=400&v=4" width=200px alt="_"/> | <img src="https://avatars.githubusercontent.com/u/67431553?s=400&v=4" width=200px alt="_"> | <img src="https://avatars.githubusercontent.com/u/61959836?s=400&v=4" width=200px alt="_"> |
 |                         프론트엔드                         |                         프론트엔드                         |                           백엔드                           |                           프론트엔드                           |                           백엔드                           |
