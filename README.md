@@ -2,7 +2,7 @@
 
 # 오늘의 스터디 – 온라인 스터디 플랫폼
 
-- [onlstudies.com](http://onlstudies.com) 에서 이용하실 수 있습니다!
+- [onlstudies.com](https://onlstudies.com) 에서 이용하실 수 있습니다!
 - [기획은 여기에서!!](https://www.figma.com/file/xo5yDpWwUD0PWW8Fk7Hlhw/Untitled?node-id=0%3A1) <img src="https://img.shields.io/badge/Figma-F24E1E?style=flat-square&logo=Figma&logoColor=white"/></a>
 
 ---

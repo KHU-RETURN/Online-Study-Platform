@@ -69,7 +69,7 @@ socket.on("connection", socket => {
   });
 
   socket.on("chat message", async function (userId, msg, groupId) {
-    const date = await fetch("http://onlstudies.com/api/get_date");
+    const date = await fetch("https://onlstudies.com/api/get_date");
     const dateText = await date.text();
 
     const _date = new Date(parseInt(dateText));
